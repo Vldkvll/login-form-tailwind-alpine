@@ -1,0 +1,21 @@
+{
+  "name": "alpine-vite-tailwind-login-form",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "vite --host",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "repository": "",
+  "author": {
+    "name": "Vladislav Koval",
+    "email": "vlad@pragmasoft.com.ua"
+  },
+  "devDependencies": {
+    "alpinejs": "^3.2.2",
+    "autoprefixer": "^10.3.1",
+    "postcss": "^8.3.5",
+    "tailwindcss": "^2.2.7",
+    "vite": "^2.4.3"
+  }
+}
