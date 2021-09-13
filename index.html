@@ -21,11 +21,38 @@
         <div class="relative flex flex-wrap">
           <div class="w-full relative">
             <div class="">
+              <div class="mt-20 flex justify-center">
+                <svg
+                  class="h-12 w-auto text-gray-700 inline-block"
+                  version="1.0"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="618.000000pt"
+                  height="441.000000pt"
+                  viewBox="0 0 618.000000 441.000000"
+                  preserveAspectRatio="xMidYMid meet"
+                >
+                  <g
+                    transform="translate(0.000000,441.000000) scale(0.100000,-0.100000)"
+                    fill="#000000"
+                    stroke="none"
+                  >
+                    <path
+                      d="M1937 3804 l-987 -494 2 -509 3 -509 -35 18 c-237 121 -806 390 -817
+386 -11 -5 -13 -102 -11 -558 l3 -552 1575 -744 1574 -745 993 497 993 496 -2
+509 -3 509 35 -18 c237 -121 806 -390 817 -386 11 5 13 102 11 558 l-3 552
+-1570 743 c-863 408 -1574 742 -1580 742 -5 0 -454 -223 -998 -495z m2163
+-1149 c608 -296 1106 -538 1107 -539 3 -2 -1966 -913 -1984 -918 -6 -2 -515
+242 -1132 542 l-1121 545 38 18 c20 10 469 217 997 461 641 296 965 441 975
+436 8 -4 512 -249 1120 -545z"
+                    />
+                  </g>
+                </svg>
+              </div>
               <div
                 class="
                   text-xl
                   font-bold
-                  mt-8
+                  mt-12
                   text-start
                   font-semibold
                   text-black
@@ -49,7 +76,7 @@
                           w-full
                           bg-white
                           border-gray-300
-                          placeholder-gray-600
+                          placeholder-gray-400
                           focus:placeholder-gray-500
                           focus:bg-white
                           focus:border-gray-600
@@ -60,7 +87,6 @@
                         class="
                           absolute
                           inset-y-0
-                          -left-40
                           pr-3
                           flex
                           items-center
@@ -69,7 +95,7 @@
                         "
                       >
                         <svg
-                          class="h-6 text-gray-700 opacity-50"
+                          class="h-6 w-auto text-gray-700 opacity-50"
                           xmlns="http://www.w3.org/2000/svg"
                           xmlns:xlink="http://www.w3.org/1999/xlink"
                           version="1.1"
@@ -138,6 +164,7 @@
                         placeholder="Password"
                         :type="show ? 'password' : 'text'"
                         class="
+                          z-50
                           border-b-2
                           text-md
                           px-11
@@ -145,7 +172,7 @@
                           w-full
                           bg-white
                           border-gray-300
-                          placeholder-gray-600
+                          placeholder-gray-400
                           focus:placeholder-gray-500
                           focus:bg-white
                           focus:border-gray-600
@@ -156,26 +183,16 @@
                         class="
                           absolute
                           inset-y-0
-                          -left-60
+                          top-4
                           pr-3
-                          flex
                           items-center
                           text-sm
                           leading-5
                         "
                       >
-                        <!-- <svg
-                          class="h-6 text-gray-700 opacity-50"
-                          fill="none"
-                          viewbox="0 0 576 512"
-                        >
-                          <path
-                            fill="currentColor"
-                            d="M572.52 241.4C518.29 135.59 410.93 64 288 64S57.68 135.64 3.48 241.41a32.35 32.35 0 0 0 0 29.19C57.71 376.41 165.07 448 288 448s230.32-71.64 284.52-177.41a32.35 32.35 0 0 0 0-29.19zM288 400a144 144 0 1 1 144-144 143.93 143.93 0 0 1-144 144zm0-240a95.31 95.31 0 0 0-25.31 3.79 47.85 47.85 0 0 1-66.9 66.9A95.78 95.78 0 1 0 288 160z"
-                          ></path>
-                        </svg> -->
                         <svg
-                          class="h-6 text-gray-700 opacity-50"
+                          class="h-6 w-auto text-gray-400 opacity-50"
+                          :class="{'hidden': !show, 'block':show }"
                           id="light"
                           enable-background="new 0 0 24 24"
                           height="512"
@@ -195,19 +212,27 @@
                           </g>
                         </svg>
 
-                        <!-- <svg
-                          class="h-6 text-gray-700"
-                          fill="none"
-                          @click="show = !show"
+                        <svg
+                          class="h-6 w-auto text-gray-400"
                           :class="{'block': !show, 'hidden':show }"
+                          id="light"
+                          enable-background="new 0 0 24 24"
+                          height="512"
+                          viewBox="0 0 24 24"
+                          width="512"
                           xmlns="http://www.w3.org/2000/svg"
-                          viewbox="0 0 576 512"
                         >
-                          <path
-                            fill="currentColor"
-                            d="M572.52 241.4C518.29 135.59 410.93 64 288 64S57.68 135.64 3.48 241.41a32.35 32.35 0 0 0 0 29.19C57.71 376.41 165.07 448 288 448s230.32-71.64 284.52-177.41a32.35 32.35 0 0 0 0-29.19zM288 400a144 144 0 1 1 144-144 143.93 143.93 0 0 1-144 144zm0-240a95.31 95.31 0 0 0-25.31 3.79 47.85 47.85 0 0 1-66.9 66.9A95.78 95.78 0 1 0 288 160z"
-                          ></path>
-                        </svg> -->
+                          <g>
+                            <path
+                              d="m19 24h-14c-1.103 0-2-.897-2-2v-10c0-1.103.897-2 2-2h14c1.103 0 2 .897 2 2v10c0 1.103-.897 2-2 2zm-14-13c-.552 0-1 .449-1 1v10c0 .551.448 1 1 1h14c.552 0 1-.449 1-1v-10c0-.551-.448-1-1-1z"
+                            />
+                          </g>
+                          <g>
+                            <path
+                              d="m6.5 11c-.276 0-.5-.224-.5-.5v-4.5c0-3.309 2.691-6 6-6s6 2.691 6 6v.5c0 .276-.224.5-.5.5s-.5-.224-.5-.5v-.5c0-2.757-2.243-5-5-5s-5 2.243-5 5v4.5c0 .276-.224.5-.5.5z"
+                            />
+                          </g>
+                        </svg>
                       </div>
                       <div
                         class="
@@ -219,6 +244,7 @@
                           items-center
                           text-sm
                           leading-5
+                          cursor-pointer
                         "
                       >
                         <svg
@@ -253,9 +279,86 @@
                   </div>
                   <div class="container mt-2">
                     <div class="flex justify-between">
-                      <div class="block w-full">
-                        <label class="block text-gray-500 font-bold my-4"
-                          ><a
+                      <div class="flex w-full items-center">
+                        <svg
+                          class="h-6 w-7 text-gray-400 opacity-50 mr-4"
+                          xmlns="http://www.w3.org/2000/svg"
+                          xmlns:xlink="http://www.w3.org/1999/xlink"
+                          version="1.1"
+                          width="350"
+                          height="350"
+                          viewBox="0 0 350 350"
+                          xml:space="preserve"
+                        >
+                          <desc>Created with Fabric.js 1.7.22</desc>
+                          <defs></defs>
+                          <g
+                            id="icon"
+                            style="
+                              stroke: none;
+                              stroke-width: 1;
+                              stroke-dasharray: none;
+                              stroke-linecap: butt;
+                              stroke-linejoin: miter;
+                              stroke-miterlimit: 10;
+                              fill: none;
+                              fill-rule: nonzero;
+                              opacity: 1;
+                            "
+                            transform="translate(-1.9444444444444287 -1.9444444444444287) scale(3.89 3.89)"
+                          >
+                            <path
+                              d="M 45 90 C 20.187 90 0 69.813 0 45 C 0 20.187 20.187 0 45 0 c 24.813 0 45 20.187 45 45 C 90 69.813 69.813 90 45 90 z M 45 7 C 24.047 7 7 24.047 7 45 s 17.047 38 38 38 s 38 -17.047 38 -38 S 65.953 7 45 7 z"
+                              style="
+                                stroke: none;
+                                stroke-width: 1;
+                                stroke-dasharray: none;
+                                stroke-linecap: butt;
+                                stroke-linejoin: miter;
+                                stroke-miterlimit: 10;
+                                fill: rgb(0, 0, 0);
+                                fill-rule: nonzero;
+                                opacity: 1;
+                              "
+                              transform=" matrix(1 0 0 1 0 0) "
+                              stroke-linecap="round"
+                            />
+                            <path
+                              d="M 45 52.5 c -1.933 0 -3.5 -1.567 -3.5 -3.5 V 23 c 0 -1.933 1.567 -3.5 3.5 -3.5 c 1.933 0 3.5 1.567 3.5 3.5 v 26 C 48.5 50.933 46.933 52.5 45 52.5 z"
+                              style="
+                                stroke: none;
+                                stroke-width: 1;
+                                stroke-dasharray: none;
+                                stroke-linecap: butt;
+                                stroke-linejoin: miter;
+                                stroke-miterlimit: 10;
+                                fill: rgb(0, 0, 0);
+                                fill-rule: nonzero;
+                                opacity: 1;
+                              "
+                              transform=" matrix(1 0 0 1 0 0) "
+                              stroke-linecap="round"
+                            />
+                            <path
+                              d="M 45 70.5 c -1.933 0 -3.5 -1.567 -3.5 -3.5 v -4.571 c 0 -1.933 1.567 -3.5 3.5 -3.5 c 1.933 0 3.5 1.567 3.5 3.5 V 67 C 48.5 68.933 46.933 70.5 45 70.5 z"
+                              style="
+                                stroke: none;
+                                stroke-width: 1;
+                                stroke-dasharray: none;
+                                stroke-linecap: butt;
+                                stroke-linejoin: miter;
+                                stroke-miterlimit: 10;
+                                fill: rgb(0, 0, 0);
+                                fill-rule: nonzero;
+                                opacity: 1;
+                              "
+                              transform=" matrix(1 0 0 1 0 0) "
+                              stroke-linecap="round"
+                            />
+                          </g>
+                        </svg>
+                        <label class="block text-gray-500 my-4">
+                          <a
                             href="#"
                             class="
                               cursor-pointer
