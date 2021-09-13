@@ -1,8 +1,11 @@
-import Alpine from 'alpinejs'
+import Alpine from "alpinejs";
+import persist from "@alpinejs/persist";
 
-window.Alpine = Alpine
+window.Alpine = Alpine;
 
-Alpine.start()
+Alpine.plugin(persist);
 
-import './assets/tailwind.css'
-import './assets/scrollbar.css'
+Alpine.start();
+
+import "./assets/tailwind.css";
+import "./assets/scrollbar.css";

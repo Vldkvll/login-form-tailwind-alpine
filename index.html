@@ -8,11 +8,15 @@
     <meta name="description" content="DESCRIPTION" />
 
     <title>ALPINE VITE TAILWIND LOGIN FORM</title>
-    <link
-      rel="icon"
-      href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>"
-    />
+
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
     <script type="module" src="./src/main.js"></script>
+    <style>
+      button:disabled {
+        cursor: not-allowed;
+        opacity: 0.5;
+      }
+    </style>
   </head>
 
   <body>
@@ -52,7 +56,8 @@
                 class="
                   text-xl
                   font-bold
-                  mt-12
+                  mt-8
+                  pl-4
                   text-start
                   font-semibold
                   text-black
@@ -60,344 +65,443 @@
               >
                 Welcome
               </div>
-
-              <form class="mt-2">
-                <div class="mx-auto max-w-lg">
-                  <div class="py-2">
-                    <div class="relative">
-                      <input
-                        placeholder="Email address"
-                        type="text"
-                        class="
-                          border-b-2
-                          text-md
-                          px-11
-                          py-4
-                          w-full
-                          bg-white
-                          border-gray-300
-                          placeholder-gray-400
-                          focus:placeholder-gray-500
-                          focus:bg-white
-                          focus:border-gray-600
-                          focus:outline-none
-                        "
-                      />
-                      <div
-                        class="
-                          absolute
-                          inset-y-0
-                          pr-3
-                          flex
-                          items-center
-                          text-sm
-                          leading-5
-                        "
-                      >
-                        <svg
-                          class="h-6 w-auto text-gray-700 opacity-50"
-                          xmlns="http://www.w3.org/2000/svg"
-                          xmlns:xlink="http://www.w3.org/1999/xlink"
-                          version="1.1"
-                          width="350"
-                          height="350"
-                          viewBox="0 0 350 350"
-                          xml:space="preserve"
-                        >
-                          <desc>Created with Fabric.js 1.7.22</desc>
-                          <defs></defs>
-                          <g
-                            id="icon"
-                            style="
-                              stroke: none;
-                              stroke-width: 1;
-                              stroke-dasharray: none;
-                              stroke-linecap: butt;
-                              stroke-linejoin: miter;
-                              stroke-miterlimit: 10;
-                              fill: none;
-                              fill-rule: nonzero;
-                              opacity: 1;
-                            "
-                            transform="translate(-1.9444444444444287 -1.9444444444444287) scale(3.89 3.89)"
-                          >
-                            <path
-                              d="M 44.636 46.449 c -12.806 0 -23.225 -10.418 -23.225 -23.224 C 21.411 10.418 31.83 0 44.636 0 C 57.442 0 67.86 10.418 67.86 23.225 C 67.86 36.031 57.442 46.449 44.636 46.449 z M 44.636 2.967 c -11.17 0 -20.258 9.087 -20.258 20.258 c 0 11.17 9.087 20.257 20.258 20.257 c 11.17 0 20.257 -9.087 20.257 -20.257 C 64.893 12.054 55.806 2.967 44.636 2.967 z"
-                              style="
-                                stroke: none;
-                                stroke-width: 1;
-                                stroke-dasharray: none;
-                                stroke-linecap: butt;
-                                stroke-linejoin: miter;
-                                stroke-miterlimit: 10;
-                                fill: rgb(0, 0, 0);
-                                fill-rule: nonzero;
-                                opacity: 1;
-                              "
-                              transform=" matrix(1 0 0 1 0 0) "
-                              stroke-linecap="round"
-                            />
-                            <path
-                              d="M 73.777 90 H 16.223 c -0.82 0 -1.484 -0.664 -1.484 -1.484 V 73.464 c 0 -12.535 10.199 -22.735 22.734 -22.735 h 15.052 c 12.535 0 22.735 10.199 22.735 22.735 v 15.052 C 75.26 89.336 74.596 90 73.777 90 z M 17.707 87.033 h 54.587 V 73.464 c 0 -10.9 -8.867 -19.768 -19.768 -19.768 H 37.474 c -10.9 0 -19.767 8.867 -19.767 19.768 V 87.033 z"
-                              style="
-                                stroke: none;
-                                stroke-width: 1;
-                                stroke-dasharray: none;
-                                stroke-linecap: butt;
-                                stroke-linejoin: miter;
-                                stroke-miterlimit: 10;
-                                fill: rgb(0, 0, 0);
-                                fill-rule: nonzero;
-                                opacity: 1;
-                              "
-                              transform=" matrix(1 0 0 1 0 0) "
-                              stroke-linecap="round"
-                            />
-                          </g>
-                        </svg>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="py-2" x-data="{ show: true }">
-                    <div class="relative">
-                      <input
-                        placeholder="Password"
-                        :type="show ? 'password' : 'text'"
-                        class="
-                          z-50
-                          border-b-2
-                          text-md
-                          px-11
-                          py-4
-                          w-full
-                          bg-white
-                          border-gray-300
-                          placeholder-gray-400
-                          focus:placeholder-gray-500
-                          focus:bg-white
-                          focus:border-gray-600
-                          focus:outline-none
-                        "
-                      />
-                      <div
-                        class="
-                          absolute
-                          inset-y-0
-                          top-4
-                          pr-3
-                          items-center
-                          text-sm
-                          leading-5
-                        "
-                      >
-                        <svg
-                          class="h-6 w-auto text-gray-400 opacity-50"
-                          :class="{'hidden': !show, 'block':show }"
-                          id="light"
-                          enable-background="new 0 0 24 24"
-                          height="512"
-                          viewBox="0 0 24 24"
-                          width="512"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <g>
-                            <path
-                              d="m19 24h-14c-1.103 0-2-.897-2-2v-10c0-1.103.897-2 2-2h14c1.103 0 2 .897 2 2v10c0 1.103-.897 2-2 2zm-14-13c-.552 0-1 .449-1 1v10c0 .551.448 1 1 1h14c.552 0 1-.449 1-1v-10c0-.551-.448-1-1-1z"
-                            />
-                          </g>
-                          <g>
-                            <path
-                              d="m17.5 11c-.276 0-.5-.224-.5-.5v-4.5c0-2.757-2.243-5-5-5s-5 2.243-5 5v4.5c0 .276-.224.5-.5.5s-.5-.224-.5-.5v-4.5c0-3.309 2.691-6 6-6s6 2.691 6 6v4.5c0 .276-.224.5-.5.5z"
-                            />
-                          </g>
-                        </svg>
-
-                        <svg
-                          class="h-6 w-auto text-gray-400"
-                          :class="{'block': !show, 'hidden':show }"
-                          id="light"
-                          enable-background="new 0 0 24 24"
-                          height="512"
-                          viewBox="0 0 24 24"
-                          width="512"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <g>
-                            <path
-                              d="m19 24h-14c-1.103 0-2-.897-2-2v-10c0-1.103.897-2 2-2h14c1.103 0 2 .897 2 2v10c0 1.103-.897 2-2 2zm-14-13c-.552 0-1 .449-1 1v10c0 .551.448 1 1 1h14c.552 0 1-.449 1-1v-10c0-.551-.448-1-1-1z"
-                            />
-                          </g>
-                          <g>
-                            <path
-                              d="m6.5 11c-.276 0-.5-.224-.5-.5v-4.5c0-3.309 2.691-6 6-6s6 2.691 6 6v.5c0 .276-.224.5-.5.5s-.5-.224-.5-.5v-.5c0-2.757-2.243-5-5-5s-5 2.243-5 5v4.5c0 .276-.224.5-.5.5z"
-                            />
-                          </g>
-                        </svg>
-                      </div>
-                      <div
-                        class="
-                          absolute
-                          inset-y-0
-                          right-0
-                          pr-3
-                          flex
-                          items-center
-                          text-sm
-                          leading-5
-                          cursor-pointer
-                        "
-                      >
-                        <svg
-                          class="h-6 text-gray-700 opacity-50"
-                          fill="none"
-                          @click="show = !show"
-                          :class="{'hidden': !show, 'block':show }"
-                          xmlns="http://www.w3.org/2000/svg"
-                          viewbox="0 0 576 512"
-                        >
-                          <path
-                            fill="currentColor"
-                            d="M572.52 241.4C518.29 135.59 410.93 64 288 64S57.68 135.64 3.48 241.41a32.35 32.35 0 0 0 0 29.19C57.71 376.41 165.07 448 288 448s230.32-71.64 284.52-177.41a32.35 32.35 0 0 0 0-29.19zM288 400a144 144 0 1 1 144-144 143.93 143.93 0 0 1-144 144zm0-240a95.31 95.31 0 0 0-25.31 3.79 47.85 47.85 0 0 1-66.9 66.9A95.78 95.78 0 1 0 288 160z"
-                          ></path>
-                        </svg>
-
-                        <svg
-                          class="h-6 text-gray-700"
-                          fill="none"
-                          @click="show = !show"
-                          :class="{'block': !show, 'hidden':show }"
-                          xmlns="http://www.w3.org/2000/svg"
-                          viewbox="0 0 576 512"
-                        >
-                          <path
-                            fill="currentColor"
-                            d="M572.52 241.4C518.29 135.59 410.93 64 288 64S57.68 135.64 3.48 241.41a32.35 32.35 0 0 0 0 29.19C57.71 376.41 165.07 448 288 448s230.32-71.64 284.52-177.41a32.35 32.35 0 0 0 0-29.19zM288 400a144 144 0 1 1 144-144 143.93 143.93 0 0 1-144 144zm0-240a95.31 95.31 0 0 0-25.31 3.79 47.85 47.85 0 0 1-66.9 66.9A95.78 95.78 0 1 0 288 160z"
-                          ></path>
-                        </svg>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="container mt-2">
-                    <div class="flex justify-between">
-                      <div class="flex w-full items-center">
-                        <svg
-                          class="h-6 w-7 text-gray-400 opacity-50 mr-4"
-                          xmlns="http://www.w3.org/2000/svg"
-                          xmlns:xlink="http://www.w3.org/1999/xlink"
-                          version="1.1"
-                          width="350"
-                          height="350"
-                          viewBox="0 0 350 350"
-                          xml:space="preserve"
-                        >
-                          <desc>Created with Fabric.js 1.7.22</desc>
-                          <defs></defs>
-                          <g
-                            id="icon"
-                            style="
-                              stroke: none;
-                              stroke-width: 1;
-                              stroke-dasharray: none;
-                              stroke-linecap: butt;
-                              stroke-linejoin: miter;
-                              stroke-miterlimit: 10;
-                              fill: none;
-                              fill-rule: nonzero;
-                              opacity: 1;
-                            "
-                            transform="translate(-1.9444444444444287 -1.9444444444444287) scale(3.89 3.89)"
-                          >
-                            <path
-                              d="M 45 90 C 20.187 90 0 69.813 0 45 C 0 20.187 20.187 0 45 0 c 24.813 0 45 20.187 45 45 C 90 69.813 69.813 90 45 90 z M 45 7 C 24.047 7 7 24.047 7 45 s 17.047 38 38 38 s 38 -17.047 38 -38 S 65.953 7 45 7 z"
-                              style="
-                                stroke: none;
-                                stroke-width: 1;
-                                stroke-dasharray: none;
-                                stroke-linecap: butt;
-                                stroke-linejoin: miter;
-                                stroke-miterlimit: 10;
-                                fill: rgb(0, 0, 0);
-                                fill-rule: nonzero;
-                                opacity: 1;
-                              "
-                              transform=" matrix(1 0 0 1 0 0) "
-                              stroke-linecap="round"
-                            />
-                            <path
-                              d="M 45 52.5 c -1.933 0 -3.5 -1.567 -3.5 -3.5 V 23 c 0 -1.933 1.567 -3.5 3.5 -3.5 c 1.933 0 3.5 1.567 3.5 3.5 v 26 C 48.5 50.933 46.933 52.5 45 52.5 z"
-                              style="
-                                stroke: none;
-                                stroke-width: 1;
-                                stroke-dasharray: none;
-                                stroke-linecap: butt;
-                                stroke-linejoin: miter;
-                                stroke-miterlimit: 10;
-                                fill: rgb(0, 0, 0);
-                                fill-rule: nonzero;
-                                opacity: 1;
-                              "
-                              transform=" matrix(1 0 0 1 0 0) "
-                              stroke-linecap="round"
-                            />
-                            <path
-                              d="M 45 70.5 c -1.933 0 -3.5 -1.567 -3.5 -3.5 v -4.571 c 0 -1.933 1.567 -3.5 3.5 -3.5 c 1.933 0 3.5 1.567 3.5 3.5 V 67 C 48.5 68.933 46.933 70.5 45 70.5 z"
-                              style="
-                                stroke: none;
-                                stroke-width: 1;
-                                stroke-dasharray: none;
-                                stroke-linecap: butt;
-                                stroke-linejoin: miter;
-                                stroke-miterlimit: 10;
-                                fill: rgb(0, 0, 0);
-                                fill-rule: nonzero;
-                                opacity: 1;
-                              "
-                              transform=" matrix(1 0 0 1 0 0) "
-                              stroke-linecap="round"
-                            />
-                          </g>
-                        </svg>
-                        <label class="block text-gray-500 my-4">
-                          <a
-                            href="#"
+              <div x-data="{ credential: $persist({email:'', password:''}) }">
+                <form
+                  class="mt-2"
+                  x-data="contactForm(credential)"
+                  @submit.prevent="submitData"
+                >
+                  <div class="mx-auto max-w-lg">
+                    <div class="py-2">
+                      <div class="relative">
+                        <div x-data="{EmailField: '' }">
+                          <input
+                            x-data="{EmailField: '' }"
+                            x-model="formData.email"
+                            placeholder="Email address"
+                            type="text"
+                            required
+                            name="EmailField"
                             class="
-                              cursor-pointer
-                              tracking-tighter
-                              text-gray-400
-                              block
-                              border-none border-gray-200
-                              hover:border-gray-400
+                              border-b-2
+                              text-md
+                              px-11
+                              py-4
+                              w-full
+                              bg-white
+                              border-gray-300
+                              placeholder-gray-400
+                              focus:placeholder-gray-500
+                              focus:bg-white
+                              focus:border-gray-600
+                              focus:outline-none
                             "
-                            ><span>Forgot Password?</span></a
-                          ></label
+                          />
+                          <div
+                            class="
+                              absolute
+                              inset-y-0
+                              pl-4
+                              pr-3
+                              flex
+                              items-center
+                              text-sm
+                              leading-5
+                            "
+                          >
+                            <svg
+                              class="h-6 w-auto text-gray-700 opacity-50"
+                              xmlns="http://www.w3.org/2000/svg"
+                              xmlns:xlink="http://www.w3.org/1999/xlink"
+                              version="1.1"
+                              width="350"
+                              height="350"
+                              viewBox="0 0 350 350"
+                              xml:space="preserve"
+                            >
+                              <desc>Created with Fabric.js 1.7.22</desc>
+                              <defs></defs>
+                              <g
+                                id="icon"
+                                style="
+                                  stroke: none;
+                                  stroke-width: 1;
+                                  stroke-dasharray: none;
+                                  stroke-linecap: butt;
+                                  stroke-linejoin: miter;
+                                  stroke-miterlimit: 10;
+                                  fill: none;
+                                  fill-rule: nonzero;
+                                  opacity: 1;
+                                "
+                                transform="translate(-1.9444444444444287 -1.9444444444444287) scale(3.89 3.89)"
+                              >
+                                <path
+                                  d="M 44.636 46.449 c -12.806 0 -23.225 -10.418 -23.225 -23.224 C 21.411 10.418 31.83 0 44.636 0 C 57.442 0 67.86 10.418 67.86 23.225 C 67.86 36.031 57.442 46.449 44.636 46.449 z M 44.636 2.967 c -11.17 0 -20.258 9.087 -20.258 20.258 c 0 11.17 9.087 20.257 20.258 20.257 c 11.17 0 20.257 -9.087 20.257 -20.257 C 64.893 12.054 55.806 2.967 44.636 2.967 z"
+                                  style="
+                                    stroke: none;
+                                    stroke-width: 1;
+                                    stroke-dasharray: none;
+                                    stroke-linecap: butt;
+                                    stroke-linejoin: miter;
+                                    stroke-miterlimit: 10;
+                                    fill: rgb(0, 0, 0);
+                                    fill-rule: nonzero;
+                                    opacity: 1;
+                                  "
+                                  transform=" matrix(1 0 0 1 0 0) "
+                                  stroke-linecap="round"
+                                />
+                                <path
+                                  d="M 73.777 90 H 16.223 c -0.82 0 -1.484 -0.664 -1.484 -1.484 V 73.464 c 0 -12.535 10.199 -22.735 22.734 -22.735 h 15.052 c 12.535 0 22.735 10.199 22.735 22.735 v 15.052 C 75.26 89.336 74.596 90 73.777 90 z M 17.707 87.033 h 54.587 V 73.464 c 0 -10.9 -8.867 -19.768 -19.768 -19.768 H 37.474 c -10.9 0 -19.767 8.867 -19.767 19.768 V 87.033 z"
+                                  style="
+                                    stroke: none;
+                                    stroke-width: 1;
+                                    stroke-dasharray: none;
+                                    stroke-linecap: butt;
+                                    stroke-linejoin: miter;
+                                    stroke-miterlimit: 10;
+                                    fill: rgb(0, 0, 0);
+                                    fill-rule: nonzero;
+                                    opacity: 1;
+                                  "
+                                  transform=" matrix(1 0 0 1 0 0) "
+                                  stroke-linecap="round"
+                                />
+                              </g>
+                            </svg>
+                          </div>
+                        </div>
+                        <div
+                          class="
+                            absolute
+                            inset-y-0
+                            right-0
+                            pr-8
+                            flex
+                            items-center
+                            text-sm
+                            leading-5
+                            cursor-pointer
+                          "
                         >
+                          <svg
+                            class="h-6 w-auto"
+                            xmlns="http://www.w3.org/2000/svg"
+                            xmlns:xlink="http://www.w3.org/1999/xlink"
+                            version="1.1"
+                            width="350"
+                            height="350"
+                            viewBox="0 0 350 350"
+                            xml:space="preserve"
+                          >
+                            <desc>Created with Fabric.js 1.7.22</desc>
+                            <defs></defs>
+                            <g
+                              id="icon"
+                              style="
+                                stroke: none;
+                                stroke-width: 1;
+                                stroke-dasharray: none;
+                                stroke-linecap: butt;
+                                stroke-linejoin: miter;
+                                stroke-miterlimit: 10;
+                                fill: none;
+                                fill-rule: nonzero;
+                                opacity: 1;
+                              "
+                              transform="translate(-1.9444444444444287 -1.9444444444444287) scale(3.89 3.89)"
+                            >
+                              <path
+                                d="M 89.122 3.486 L 89.122 3.486 c -2.222 -3.736 -7.485 -4.118 -10.224 -0.742 L 33.202 59.083 c -1.118 1.378 -3.245 1.303 -4.262 -0.151 L 17.987 43.291 c -3.726 -5.322 -11.485 -5.665 -15.666 -0.693 l 0 0 c -2.883 3.428 -3.102 8.366 -0.533 12.036 L 24.206 86.65 c 2.729 3.897 8.503 3.89 11.222 -0.014 l 6.435 -9.239 L 88.87 10.265 C 90.28 8.251 90.378 5.598 89.122 3.486 z"
+                                style="
+                                  stroke: none;
+                                  stroke-width: 1;
+                                  stroke-dasharray: none;
+                                  stroke-linecap: butt;
+                                  stroke-linejoin: miter;
+                                  stroke-miterlimit: 10;
+                                  fill: rgb(6, 188, 66);
+                                  fill-rule: nonzero;
+                                  opacity: 1;
+                                "
+                                transform=" matrix(1 0 0 1 0 0) "
+                                stroke-linecap="round"
+                              />
+                            </g>
+                          </svg>
+                        </div>
                       </div>
-                      <button
-                        class="
-                          h-10
-                          px-5
-                          m-2
-                          text-gray-400
-                          transition-colors
-                          duration-150
-                          rounded-lg
-                          border-2 border-gray-400
-                          focus:shadow-outline
-                          rounded-full
-                          block
-                          hover:text-white hover:bg-green-400 hover:border-none
-                        "
-                      >
-                        Login
-                      </button>
+                    </div>
+                    <div class="py-2" x-data="{ show: true }">
+                      <div class="relative">
+                        <input
+                          placeholder="Password"
+                          :type="show ? 'password' : 'text'"
+                          x-model="formData.password"
+                          required
+                          class="
+                            z-50
+                            border-b-2
+                            text-md
+                            px-11
+                            py-4
+                            w-full
+                            bg-white
+                            border-gray-300
+                            placeholder-gray-400
+                            focus:placeholder-gray-500
+                            focus:bg-white
+                            focus:border-gray-600
+                            focus:outline-none
+                          "
+                        />
+                        <div
+                          class="
+                            absolute
+                            inset-y-0
+                            pl-4
+                            top-4
+                            pr-3
+                            items-center
+                            text-sm
+                            leading-5
+                          "
+                        >
+                          <svg
+                            class="h-6 w-auto text-gray-400 opacity-50"
+                            :class="{'hidden': !show, 'block':show }"
+                            id="light"
+                            enable-background="new 0 0 24 24"
+                            height="512"
+                            viewBox="0 0 24 24"
+                            width="512"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <g>
+                              <path
+                                d="m19 24h-14c-1.103 0-2-.897-2-2v-10c0-1.103.897-2 2-2h14c1.103 0 2 .897 2 2v10c0 1.103-.897 2-2 2zm-14-13c-.552 0-1 .449-1 1v10c0 .551.448 1 1 1h14c.552 0 1-.449 1-1v-10c0-.551-.448-1-1-1z"
+                              />
+                            </g>
+                            <g>
+                              <path
+                                d="m17.5 11c-.276 0-.5-.224-.5-.5v-4.5c0-2.757-2.243-5-5-5s-5 2.243-5 5v4.5c0 .276-.224.5-.5.5s-.5-.224-.5-.5v-4.5c0-3.309 2.691-6 6-6s6 2.691 6 6v4.5c0 .276-.224.5-.5.5z"
+                              />
+                            </g>
+                          </svg>
+
+                          <svg
+                            class="h-6 w-auto text-gray-400"
+                            :class="{'block': !show, 'hidden':show }"
+                            id="light"
+                            enable-background="new 0 0 24 24"
+                            height="512"
+                            viewBox="0 0 24 24"
+                            width="512"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <g>
+                              <path
+                                d="m19 24h-14c-1.103 0-2-.897-2-2v-10c0-1.103.897-2 2-2h14c1.103 0 2 .897 2 2v10c0 1.103-.897 2-2 2zm-14-13c-.552 0-1 .449-1 1v10c0 .551.448 1 1 1h14c.552 0 1-.449 1-1v-10c0-.551-.448-1-1-1z"
+                              />
+                            </g>
+                            <g>
+                              <path
+                                d="m6.5 11c-.276 0-.5-.224-.5-.5v-4.5c0-3.309 2.691-6 6-6s6 2.691 6 6v.5c0 .276-.224.5-.5.5s-.5-.224-.5-.5v-.5c0-2.757-2.243-5-5-5s-5 2.243-5 5v4.5c0 .276-.224.5-.5.5z"
+                              />
+                            </g>
+                          </svg>
+                        </div>
+                        <div
+                          class="
+                            absolute
+                            inset-y-0
+                            right-0
+                            pr-8
+                            flex
+                            items-center
+                            text-sm
+                            leading-5
+                            cursor-pointer
+                          "
+                        >
+                          <svg
+                            class="h-6 text-gray-700 opacity-50"
+                            fill="none"
+                            @click="show = !show"
+                            :class="{'hidden': !show, 'block':show }"
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewbox="0 0 576 512"
+                          >
+                            <path
+                              fill="currentColor"
+                              d="M572.52 241.4C518.29 135.59 410.93 64 288 64S57.68 135.64 3.48 241.41a32.35 32.35 0 0 0 0 29.19C57.71 376.41 165.07 448 288 448s230.32-71.64 284.52-177.41a32.35 32.35 0 0 0 0-29.19zM288 400a144 144 0 1 1 144-144 143.93 143.93 0 0 1-144 144zm0-240a95.31 95.31 0 0 0-25.31 3.79 47.85 47.85 0 0 1-66.9 66.9A95.78 95.78 0 1 0 288 160z"
+                            ></path>
+                          </svg>
+
+                          <svg
+                            class="h-6 text-gray-700"
+                            fill="none"
+                            @click="show = !show"
+                            :class="{'block': !show, 'hidden':show }"
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewbox="0 0 576 512"
+                          >
+                            <path
+                              fill="currentColor"
+                              d="M572.52 241.4C518.29 135.59 410.93 64 288 64S57.68 135.64 3.48 241.41a32.35 32.35 0 0 0 0 29.19C57.71 376.41 165.07 448 288 448s230.32-71.64 284.52-177.41a32.35 32.35 0 0 0 0-29.19zM288 400a144 144 0 1 1 144-144 143.93 143.93 0 0 1-144 144zm0-240a95.31 95.31 0 0 0-25.31 3.79 47.85 47.85 0 0 1-66.9 66.9A95.78 95.78 0 1 0 288 160z"
+                            ></path>
+                          </svg>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="container mt-2 px-4">
+                      <div class="flex justify-between items-center">
+                        <div class="flex w-full justify-start items-center">
+                          <svg
+                            class="h-6 w-7 text-gray-400 opacity-40 mr-1"
+                            xmlns="http://www.w3.org/2000/svg"
+                            xmlns:xlink="http://www.w3.org/1999/xlink"
+                            version="1.1"
+                            width="350"
+                            height="350"
+                            viewBox="0 0 350 350"
+                            xml:space="preserve"
+                          >
+                            <desc>Created with Fabric.js 1.7.22</desc>
+                            <defs></defs>
+                            <g
+                              id="icon"
+                              style="
+                                stroke: none;
+                                stroke-width: 1;
+                                stroke-dasharray: none;
+                                stroke-linecap: butt;
+                                stroke-linejoin: miter;
+                                stroke-miterlimit: 10;
+                                fill: none;
+                                fill-rule: nonzero;
+                                opacity: 1;
+                              "
+                              transform="translate(-1.9444444444444287 -1.9444444444444287) scale(3.89 3.89)"
+                            >
+                              <path
+                                d="M 45 90 C 20.187 90 0 69.813 0 45 C 0 20.187 20.187 0 45 0 c 24.813 0 45 20.187 45 45 C 90 69.813 69.813 90 45 90 z M 45 7 C 24.047 7 7 24.047 7 45 s 17.047 38 38 38 s 38 -17.047 38 -38 S 65.953 7 45 7 z"
+                                style="
+                                  stroke: none;
+                                  stroke-width: 1;
+                                  stroke-dasharray: none;
+                                  stroke-linecap: butt;
+                                  stroke-linejoin: miter;
+                                  stroke-miterlimit: 10;
+                                  fill: rgb(0, 0, 0);
+                                  fill-rule: nonzero;
+                                  opacity: 1;
+                                "
+                                transform=" matrix(1 0 0 1 0 0) "
+                                stroke-linecap="round"
+                              />
+                              <path
+                                d="M 45 52.5 c -1.933 0 -3.5 -1.567 -3.5 -3.5 V 23 c 0 -1.933 1.567 -3.5 3.5 -3.5 c 1.933 0 3.5 1.567 3.5 3.5 v 26 C 48.5 50.933 46.933 52.5 45 52.5 z"
+                                style="
+                                  stroke: none;
+                                  stroke-width: 1;
+                                  stroke-dasharray: none;
+                                  stroke-linecap: butt;
+                                  stroke-linejoin: miter;
+                                  stroke-miterlimit: 10;
+                                  fill: rgb(0, 0, 0);
+                                  fill-rule: nonzero;
+                                  opacity: 1;
+                                "
+                                transform=" matrix(1 0 0 1 0 0) "
+                                stroke-linecap="round"
+                              />
+                              <path
+                                d="M 45 70.5 c -1.933 0 -3.5 -1.567 -3.5 -3.5 v -4.571 c 0 -1.933 1.567 -3.5 3.5 -3.5 c 1.933 0 3.5 1.567 3.5 3.5 V 67 C 48.5 68.933 46.933 70.5 45 70.5 z"
+                                style="
+                                  stroke: none;
+                                  stroke-width: 1;
+                                  stroke-dasharray: none;
+                                  stroke-linecap: butt;
+                                  stroke-linejoin: miter;
+                                  stroke-miterlimit: 10;
+                                  fill: rgb(0, 0, 0);
+                                  fill-rule: nonzero;
+                                  opacity: 1;
+                                "
+                                transform=" matrix(1 0 0 1 0 0) "
+                                stroke-linecap="round"
+                              />
+                            </g>
+                          </svg>
+                          <label class="block text-gray-500 my-4">
+                            <a
+                              href="#"
+                              class="
+                                cursor-pointer
+                                tracking-tighter
+                                text-gray-400
+                                block
+                                border-none border-gray-200
+                                hover:border-gray-400
+                              "
+                              ><span>Forgot Password?</span></a
+                            ></label
+                          >
+                        </div>
+                        <button
+                          type="submit"
+                          @click="credential.email=formData.email
+                          credential.password=formData.password"
+                          class="
+                            h-10
+                            px-5
+                            m-2
+                            text-gray-400
+                            transition-colors
+                            duration-150
+                            rounded-lg
+                            border-2 border-gray-400
+                            focus:shadow-outline
+                            rounded-full
+                            block
+                            hover:text-white
+                            hover:bg-green-400
+                            hover:border-none
+                          "
+                          :disabled="loading"
+                        >
+                          Login
+                        </button>
+                      </div>
                     </div>
                   </div>
-                </div>
-              </form>
+                </form>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
+    <script>
+      function contactForm() {
+        return {
+          formData: {
+            password: "",
+            email: "",
+          },
+          loading: false,
+          buttonLabel: "Submit",
+
+          submitData() {
+            this.buttonLabel = "Submitting...";
+            this.loading = true;
+            console.log(`formData`, this.formData.email);
+            console.log(`formData`, this.formData.password);
+          },
+        };
+      }
+    </script>
   </body>
 </html>
