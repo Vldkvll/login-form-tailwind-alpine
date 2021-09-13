@@ -53,15 +53,7 @@
                 </svg>
               </div>
               <div
-                class="
-                  text-xl
-                  font-bold
-                  mt-8
-                  pl-4
-                  text-start
-                  font-semibold
-                  text-black
-                "
+                class="text-xl mt-8 pl-4 text-start font-semibold text-black"
               >
                 Welcome
               </div>
@@ -72,7 +64,7 @@
                   @submit.prevent="submitData"
                 >
                   <div class="mx-auto max-w-lg">
-                    <div class="py-2">
+                    <div class="py-2" x-data="{ show: false }">
                       <div class="relative">
                         <div x-data="{EmailField: '' }">
                           <input
@@ -185,35 +177,22 @@
                             cursor-pointer
                           "
                         >
-                          <svg
-                            class="h-6 w-auto"
-                            xmlns="http://www.w3.org/2000/svg"
-                            xmlns:xlink="http://www.w3.org/1999/xlink"
-                            version="1.1"
-                            width="350"
-                            height="350"
-                            viewBox="0 0 350 350"
-                            xml:space="preserve"
-                          >
-                            <desc>Created with Fabric.js 1.7.22</desc>
-                            <defs></defs>
-                            <g
-                              id="icon"
-                              style="
-                                stroke: none;
-                                stroke-width: 1;
-                                stroke-dasharray: none;
-                                stroke-linecap: butt;
-                                stroke-linejoin: miter;
-                                stroke-miterlimit: 10;
-                                fill: none;
-                                fill-rule: nonzero;
-                                opacity: 1;
-                              "
-                              transform="translate(-1.9444444444444287 -1.9444444444444287) scale(3.89 3.89)"
+                          <template x-if="credential.email == formData.email">
+                            <svg
+                              class="h-6 w-auto"
+                              :class="{'block': show, 'hidden':show }"
+                              xmlns="http://www.w3.org/2000/svg"
+                              xmlns:xlink="http://www.w3.org/1999/xlink"
+                              version="1.1"
+                              width="350"
+                              height="350"
+                              viewBox="0 0 350 350"
+                              xml:space="preserve"
                             >
-                              <path
-                                d="M 89.122 3.486 L 89.122 3.486 c -2.222 -3.736 -7.485 -4.118 -10.224 -0.742 L 33.202 59.083 c -1.118 1.378 -3.245 1.303 -4.262 -0.151 L 17.987 43.291 c -3.726 -5.322 -11.485 -5.665 -15.666 -0.693 l 0 0 c -2.883 3.428 -3.102 8.366 -0.533 12.036 L 24.206 86.65 c 2.729 3.897 8.503 3.89 11.222 -0.014 l 6.435 -9.239 L 88.87 10.265 C 90.28 8.251 90.378 5.598 89.122 3.486 z"
+                              <desc>Created with Fabric.js 1.7.22</desc>
+                              <defs></defs>
+                              <g
+                                id="icon"
                                 style="
                                   stroke: none;
                                   stroke-width: 1;
@@ -221,15 +200,31 @@
                                   stroke-linecap: butt;
                                   stroke-linejoin: miter;
                                   stroke-miterlimit: 10;
-                                  fill: rgb(6, 188, 66);
+                                  fill: none;
                                   fill-rule: nonzero;
                                   opacity: 1;
                                 "
-                                transform=" matrix(1 0 0 1 0 0) "
-                                stroke-linecap="round"
-                              />
-                            </g>
-                          </svg>
+                                transform="translate(-1.9444444444444287 -1.9444444444444287) scale(3.89 3.89)"
+                              >
+                                <path
+                                  d="M 89.122 3.486 L 89.122 3.486 c -2.222 -3.736 -7.485 -4.118 -10.224 -0.742 L 33.202 59.083 c -1.118 1.378 -3.245 1.303 -4.262 -0.151 L 17.987 43.291 c -3.726 -5.322 -11.485 -5.665 -15.666 -0.693 l 0 0 c -2.883 3.428 -3.102 8.366 -0.533 12.036 L 24.206 86.65 c 2.729 3.897 8.503 3.89 11.222 -0.014 l 6.435 -9.239 L 88.87 10.265 C 90.28 8.251 90.378 5.598 89.122 3.486 z"
+                                  style="
+                                    stroke: none;
+                                    stroke-width: 1;
+                                    stroke-dasharray: none;
+                                    stroke-linecap: butt;
+                                    stroke-linejoin: miter;
+                                    stroke-miterlimit: 10;
+                                    fill: rgb(6, 188, 66);
+                                    fill-rule: nonzero;
+                                    opacity: 1;
+                                  "
+                                  transform=" matrix(1 0 0 1 0 0) "
+                                  stroke-linecap="round"
+                                />
+                              </g>
+                            </svg>
+                          </template>
                         </div>
                       </div>
                     </div>
@@ -452,8 +447,10 @@
                         </div>
                         <button
                           type="submit"
-                          @click="credential.email=formData.email
-                          credential.password=formData.password"
+                          @click="
+                          credential.email=formData.email
+                          credential.password=formData.password
+                          "
                           class="
                             h-10
                             px-5
@@ -461,7 +458,6 @@
                             text-gray-400
                             transition-colors
                             duration-150
-                            rounded-lg
                             border-2 border-gray-400
                             focus:shadow-outline
                             rounded-full
@@ -484,6 +480,28 @@
         </div>
       </div>
     </div>
+
+    <footer items-center class="bg-gray-200 bottom-0 sticky">
+      <div
+        class="container flex justify-between align-center items-center h-20"
+      >
+        <div class="ml-4 h-12 rounded-full bg-white w-12">
+          <img
+            class="p-2 opacity-40"
+            src="./src/image/icon/globe.svg"
+            alt="globe"
+          />
+        </div>
+        <div class="mr-4 flex items-center">
+          <span class="text-base opacity-40 pr-4">New user</span>
+          <img
+            class="h-12 opacity-40 cursor-pointer"
+            src="./src/image/icon/login-square-arrow-button-outline.svg"
+            alt="arrow"
+          />
+        </div>
+      </div>
+    </footer>
     <script>
       function contactForm() {
         return {
@@ -497,8 +515,6 @@
           submitData() {
             this.buttonLabel = "Submitting...";
             this.loading = true;
-            console.log(`formData`, this.formData.email);
-            console.log(`formData`, this.formData.password);
           },
         };
       }
