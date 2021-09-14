@@ -7,21 +7,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="DESCRIPTION" />
 
-    <title>ALPINE VITE TAILWIND REGISTRATION FORM</title>
+    <title>ALPINE VITE TAILWIND LOGIN FORM</title>
 
     <link rel="icon" type="image/svg+xml" href="favicon.svg" />
     <script type="module" src="./src/main.js"></script>
-    <script src="./src/script/script.js"></script>
-
-    <style>
-      button:disabled {
-        cursor: not-allowed;
-        opacity: 0.5;
-      }
-    </style>
   </head>
 
-  <body>
+  <body
+    x-data="{submitEmail: '', submitPassword: '' , emailField: '' , password:'' }"
+  >
     <div class="min-h-screen font-sans">
       <div class="max-w-sm mx-auto">
         <div class="relative flex flex-wrap">
@@ -37,96 +31,54 @@
               <div
                 class="text-xl mt-16 pl-4 text-start font-semibold text-black"
               >
-                REGISTRATION
+                Welcome
               </div>
               <div
-                x-data="{ credential: $persist({email:'', password:'', user:''}) }"
+                x-data="{credentials: JSON.parse(localStorage.getItem('_x_credential') || {} ) }"
               >
-                <form class="mt-2" @submit.prevent="submitData">
-                  <div x-data="userCred" class="mx-auto max-w-lg">
-                    <div class="">
+                <form class="mt-2">
+                  <div class="mx-auto max-w-lg">
+                    <div class="" x-data="{ show: false }">
                       <div class="relative">
-                        <div x-data="{Username: '' }" class="relative">
-                          <input
-                            x-data="{Username: '' }"
-                            x-model="user"
-                            placeholder="Username"
-                            type="text"
-                            required
-                            name="Username"
-                            class="
-                              border-b-2
-                              text-md
-                              px-12
-                              py-6
-                              w-full
-                              bg-white
-                              border-gray-300
-                              placeholder-gray-400
-                              focus:placeholder-gray-500
-                              focus:bg-white
-                              focus:border-gray-600
-                              focus:outline-none
-                            "
+                        <input
+                          x-model="emailField"
+                          placeholder="Email address"
+                          type="text"
+                          required
+                          name="emailField"
+                          :class="{'border-green-300' : submitEmail===credentials.email, 'border-pink-700' : submitEmail===credentials.email, 'border-gray-300' : !submitEmail }"
+                          class="
+                            border-b-2
+                            text-md
+                            px-12
+                            py-6
+                            w-full
+                            bg-white
+                            border-gray-300
+                            placeholder-gray-400
+                            focus:placeholder-gray-500
+                            focus:bg-white
+                            focus:border-gray-600
+                            focus:outline-none
+                          "
+                        />
+                        <div
+                          x-data="{ open: false }"
+                          class="
+                            absolute
+                            inset-y-0
+                            pl-3
+                            flex
+                            items-center
+                            text-sm
+                            leading-5
+                          "
+                        >
+                          <img
+                            class="h-8 w-auto text-gray-700 opacity-50"
+                            src="./src/image/icon/person.svg"
+                            alt="user"
                           />
-                          <div
-                            class="
-                              absolute
-                              inset-y-0
-                              pl-3
-                              flex
-                              items-center
-                              text-sm
-                              leading-5
-                            "
-                          >
-                            <img
-                              class="h-8 w-auto text-gray-700 opacity-50"
-                              src="./src/image/icon/person.svg"
-                              alt="user"
-                            />
-                          </div>
-                        </div>
-                        <div x-data="{EmailField: '' }" class="relative">
-                          <input
-                            x-data="{EmailField: '' }"
-                            x-model="email"
-                            placeholder="Email address"
-                            type="text"
-                            required
-                            name="EmailField"
-                            class="
-                              border-b-2
-                              text-md
-                              px-12
-                              py-6
-                              w-full
-                              bg-white
-                              border-gray-300
-                              placeholder-gray-400
-                              focus:placeholder-gray-500
-                              focus:bg-white
-                              focus:border-gray-600
-                              focus:outline-none
-                            "
-                          />
-                          <div
-                            class="
-                              absolute
-                              inset-y-0
-                              pl-3
-                              flex
-                              items-center
-                              text-sm
-                              leading-5
-                            "
-                          >
-                            <img
-                              class="h-8 w-auto text-gray-700 opacity-50"
-                              src="./src/image/icon/email.svg"
-                              alt="email"
-                            />
-                          </div>
                         </div>
                         <div
                           class="
@@ -140,11 +92,19 @@
                             leading-5
                             cursor-pointer
                           "
-                        ></div>
+                        >
+                          <template x-if="credentials.email == submitEmail">
+                            <img
+                              class="h-8 w-auto"
+                              :class="{'block': show, 'hidden':show }"
+                              src="./src/image/icon/check.svg"
+                              alt=""
+                            />
+                          </template>
+                        </div>
                       </div>
                     </div>
-
-                    <div class="" x-data="{ show: true }">
+                    <div class="" x-data="{ show: true, }">
                       <div class="relative">
                         <input
                           placeholder="Password"
@@ -221,14 +181,33 @@
                         </div>
                       </div>
                     </div>
-                    <div class="container mt-12 pl-3 pr-4">
-                      <div class="flex justify-center items-center">
+                    <div class="container mt-2 pl-4 pr-4">
+                      <div class="flex justify-between items-center">
+                        <div class="flex w-full justify-start items-center">
+                          <img
+                            class="h-8 w-7 text-gray-400 opacity-40"
+                            src="./src/image/icon/warning.svg"
+                            alt="warning"
+                          />
+                          <label class="block text-gray-500 my-4">
+                            <a
+                              href="#"
+                              class="
+                                cursor-pointer
+                                tracking-tighter
+                                text-gray-400
+                                block
+                                border-none border-gray-200
+                                hover:border-gray-400
+                              "
+                              ><span class="pl-2">Forgot Password?</span></a
+                            ></label
+                          >
+                        </div>
                         <button
                           type="submit"
                           @click="
-                          credential.user=user
-                          credential.email=email
-                          credential.password=password
+                          console.log('submitEmail :>> ', submitEmail);
                           "
                           class="
                             h-10
@@ -246,7 +225,7 @@
                             hover:border-none
                           "
                         >
-                          Register
+                          Login
                         </button>
                       </div>
                     </div>
@@ -270,12 +249,11 @@
             alt="globe"
           />
         </div>
-        <div class="mr-4 flex items-center">
-          <span class="text-base opacity-40 pr-4">Login Form</span>
-          <a href="./login.html">
+        <div class="mr-4 flex items-center cursor-pointer">
+          <span class="text-base opacity-40 pr-4">New user</span>
+          <a href="./index.html">
             <img
-              class="h-12 opacity-40 cursor-pointer"
-              @click="open = true console.log('object :>> ');"
+              class="h-12 opacity-40"
               src="./src/image/icon/login-square-arrow-button-outline.svg"
               alt="arrow"
             />
