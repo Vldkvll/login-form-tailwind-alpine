@@ -13,7 +13,7 @@
     <script type="module" src="./src/main.js"></script>
     <style>
       [x-cloak] {
-        display: none !important;
+        display: none;
       }
     </style>
   </head>
@@ -24,8 +24,9 @@
         <div class="relative flex flex-wrap">
           <div class="w-full relative">
             <div class="">
-              <div x-cloak class="mt-20 flex justify-center">
+              <div class="mt-20 flex justify-center">
                 <img
+                  x-cloak
                   class="h-12 w-auto text-gray-700 inline-block"
                   src="./src/image/icon/abler-logo.svg"
                   alt="logo"
@@ -255,12 +256,11 @@
         </div>
       </div>
     </div>
-
     <footer items-center class="bg-gray-200 bottom-0 w-full fixed">
       <div
         class="container flex justify-between align-center items-center h-20"
       >
-        <div class="ml-4 h-12 rounded-full bg-white w-12">
+        <div x-cloak class="block ml-4 h-12 rounded-full bg-white w-12">
           <img
             class="p-2 opacity-40"
             src="./src/image/icon/globe.svg"
@@ -271,7 +271,8 @@
           <span class="text-base opacity-40 pr-4">Login Form</span>
           <a href="./login.html">
             <img
-              class="h-12 opacity-40 cursor-pointer"
+              x-cloak
+              class="block h-12 opacity-40 cursor-pointer"
               @click="open = true console.log('object :>> ');"
               src="./src/image/icon/login-square-arrow-button-outline.svg"
               alt="arrow"
