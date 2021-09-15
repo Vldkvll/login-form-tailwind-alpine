@@ -11,6 +11,15 @@
 
     <link rel="icon" type="image/svg+xml" href="favicon.svg" />
     <script type="module" src="./src/main.js"></script>
+    <style>
+      [x-cloak] {
+        display: none !important;
+      }
+      button:disabled {
+        cursor: not-allowed;
+        opacity: 0.5;
+      }
+    </style>
   </head>
 
   <body
@@ -20,7 +29,7 @@
       <div class="max-w-sm mx-auto">
         <div class="relative flex flex-wrap">
           <div class="w-full relative">
-            <div class="">
+            <div x-cloak class="">
               <div class="mt-20 flex justify-center">
                 <img
                   class="h-12 w-auto text-gray-700 inline-block"
@@ -238,7 +247,7 @@
       </div>
     </div>
 
-    <footer items-center class="bg-gray-200 bottom-0 w-full fixed">
+    <footer x-cloak items-center class="bg-gray-200 bottom-0 w-full fixed">
       <div
         class="container flex justify-between align-center items-center h-20"
       >

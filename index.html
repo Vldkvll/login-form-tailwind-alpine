@@ -11,12 +11,9 @@
 
     <link rel="icon" type="image/svg+xml" href="favicon.svg" />
     <script type="module" src="./src/main.js"></script>
-    <script src="./src/script/script.js"></script>
-
     <style>
-      button:disabled {
-        cursor: not-allowed;
-        opacity: 0.5;
+      [x-cloak] {
+        display: none !important;
       }
     </style>
   </head>
@@ -27,7 +24,7 @@
         <div class="relative flex flex-wrap">
           <div class="w-full relative">
             <div class="">
-              <div class="mt-20 flex justify-center">
+              <div x-cloak class="mt-20 flex justify-center">
                 <img
                   class="h-12 w-auto text-gray-700 inline-block"
                   src="./src/image/icon/abler-logo.svg"
@@ -42,7 +39,7 @@
               <div
                 x-data="{ credential: $persist({email:'', password:'', user:''}) }"
               >
-                <form class="mt-2" @submit.prevent="submitData">
+                <form x-cloak class="mt-2" @submit.prevent="submitData">
                   <div x-data="userCred" class="mx-auto max-w-lg">
                     <div class="">
                       <div class="relative">
