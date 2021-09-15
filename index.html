@@ -15,6 +15,13 @@
       [x-cloak] {
         display: none;
       }
+      button:disabled {
+        cursor: not-allowed;
+        opacity: 0.7;
+        color: rgb(189, 186, 186);
+        background-color: rgb(209, 205, 205);
+        border: none;
+      }
     </style>
   </head>
 
@@ -38,20 +45,20 @@
                 REGISTRATION
               </div>
               <div
-                x-data="{ credential: $persist({email:'', password:'', user:''}) }"
+                x-data="{ credential: $persist({email:'0000000000000000', password:'', user:''}) }"
               >
-                <form x-cloak class="mt-2" @submit.prevent="submitData">
+                <form x-cloak class="mt-2" action="./login.html">
                   <div x-data="userCred" class="mx-auto max-w-lg">
                     <div class="">
                       <div class="relative">
-                        <div x-data="{Username: '' }" class="relative">
+                        <div x-data="{username: '' }" class="relative">
                           <input
-                            x-data="{Username: '' }"
+                            x-data="{username: '' }"
                             x-model="user"
-                            placeholder="Username"
+                            placeholder="username"
                             type="text"
                             required
-                            name="Username"
+                            name="username"
                             class="
                               border-b-2
                               text-md
@@ -59,7 +66,7 @@
                               py-6
                               w-full
                               bg-white
-                              border-gray-300
+                              border-gray-200
                               placeholder-gray-400
                               focus:placeholder-gray-500
                               focus:bg-white
@@ -85,14 +92,14 @@
                             />
                           </div>
                         </div>
-                        <div x-data="{EmailField: '' }" class="relative">
+                        <div x-data="{emailField: '' }" class="relative">
                           <input
-                            x-data="{EmailField: '' }"
+                            x-data="{emailField: '' }"
                             x-model="email"
                             placeholder="Email address"
                             type="text"
                             required
-                            name="EmailField"
+                            name="emailField"
                             class="
                               border-b-2
                               text-md
@@ -100,7 +107,7 @@
                               py-6
                               w-full
                               bg-white
-                              border-gray-300
+                              border-gray-200
                               placeholder-gray-400
                               focus:placeholder-gray-500
                               focus:bg-white
@@ -147,6 +154,7 @@
                         <input
                           placeholder="Password"
                           :type="show ? 'password' : 'text'"
+                          name="password"
                           x-model="password"
                           required
                           class="
@@ -157,7 +165,7 @@
                             py-6
                             w-full
                             bg-white
-                            border-gray-300
+                            border-gray-200
                             placeholder-gray-400
                             focus:placeholder-gray-500
                             focus:bg-white
@@ -223,10 +231,12 @@
                       <div class="flex justify-center items-center">
                         <button
                           type="submit"
+                          :disabled="!email || !password || !user"
                           @click="
                           credential.user=user
                           credential.email=email
                           credential.password=password
+                          location.href='./login.html'
                           "
                           class="
                             h-10
