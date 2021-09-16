@@ -15,9 +15,9 @@
       [x-cloak] {
         display: none !important;
       }
-      button:disabled {
-        cursor: not-allowed;
-        opacity: 0.5;
+      #title,
+      #foooter:first-letter {
+        text-transform: capitalize;
       }
     </style>
   </head>
@@ -47,7 +47,7 @@
                   <p>
                     Welcome
                     <template x-if="credentials.email == submitEmail">
-                      <span x-text="credentials.user"></span>
+                      <span id="title" x-text="credentials.user"></span>
                     </template>
                   </p>
                 </div>
@@ -62,8 +62,7 @@
                             type="text"
                             required
                             name="emailField"
-                            :class="{ 
-                              'border-gray-200' : submitEmail!=undefined, 'border-green-300' : submitEmail===credentials.email, 'border-pink-700' : submitEmail!==credentials.email,  }"
+                            :class=" !submitEmail ? 'border-gray-200' : submitEmail===credentials.email ? 'border-green-300' : 'border-pink-700' "
                             class="
                               border-b-2
                               text-md
@@ -73,7 +72,6 @@
                               bg-white
                               border-gray-00
                               placeholder-gray-400
-                              focus:placeholder-gray-500
                               focus:bg-white
                               focus:border-gray-600
                               focus:outline-none
@@ -112,9 +110,19 @@
                           >
                             <template x-if="credentials.email == submitEmail">
                               <img
-                                class="h-8 w-auto"
+                                class="h-6 w-auto"
                                 :class="{'block': show, 'hidden':show }"
                                 src="./src/image/icon/check.svg"
+                                alt=""
+                              />
+                            </template>
+                            <template
+                              x-if="credentials.email !== submitEmail && submitEmail"
+                            >
+                              <img
+                                class="h-6 w-auto bg-white"
+                                :class="{'block': show, 'hidden':show }"
+                                src="./src/image/icon/close.svg"
                                 alt=""
                               />
                             </template>
@@ -126,9 +134,8 @@
                           <input
                             placeholder="Password"
                             :type="show ? 'password' : 'text'"
-                            :class="{ 'border-gray-200' : submitPassword!=undefined, 'border-green-300' : submitPassword===credentials.email, 'border-pink-700' : submitPassword!==credentials.email,  }"
+                            :class=" !submitPassword ? 'border-gray-200' : submitPassword===credentials.password ? 'border-green-300' : 'border-pink-700' "
                             x-model="password"
-                            required
                             class="
                               z-50
                               border-b-2
@@ -144,6 +151,7 @@
                               focus:border-gray-600
                               focus:outline-none
                             "
+                            required
                           />
                           <div
                             class="
@@ -228,6 +236,7 @@
                           submitEmail=emailField
                           submitPassword=password
                           "
+                            :class=" !submitPassword || !submitEmail ? null :  submitPassword===credentials.password && submitEmail===credentials.email  ? 'bg-green-400 , text-white , border-none' : 'bg-red-400 , text-white , border-none' "
                             class="
                               h-10
                               px-5
@@ -269,8 +278,11 @@
             />
           </div>
           <div class="mr-4 flex items-center cursor-pointer">
-            <template x-if="credentials.email == submitEmail">
+            <template
+              x-if=" submitPassword===credentials.password || submitEmail===credentials.email "
+            >
               <span
+                id="foooter"
                 class="text-base opacity-40 pr-4"
                 x-text="credentials.user"
               ></span>

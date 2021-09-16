@@ -1,6 +1,6 @@
 module.exports = {
   mode: "jit",
-  purge: ["./src/assets/tailwindPerso.css", "./*.html"],
+  purge: ["./*.html", " ./src/assets/tailwindPerso.css"],
   darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {
