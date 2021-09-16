@@ -46,7 +46,9 @@
                 >
                   <p>
                     Welcome
-                    <template x-if="credentials.email == submitEmail">
+                    <template
+                      x-if="submitPassword===credentials.password && submitEmail===credentials.email "
+                    >
                       <span id="title" x-text="credentials.user"></span>
                     </template>
                   </p>
@@ -236,6 +238,7 @@
                           submitEmail=emailField
                           submitPassword=password
                           "
+                            x-text="!submitPassword || !submitEmail ? 'Login' : submitPassword===credentials.password && submitEmail===credentials.email ? 'Login' :  'Retry'"
                             :class=" !submitPassword || !submitEmail ? null :  submitPassword===credentials.password && submitEmail===credentials.email  ? 'bg-green-400 , text-white , border-none' : 'bg-red-400 , text-white , border-none' "
                             class="
                               h-10
@@ -248,9 +251,6 @@
                               focus:shadow-outline
                               rounded-full
                               block
-                              hover:text-white
-                              hover:bg-green-400
-                              hover:border-none
                             "
                           >
                             Login
@@ -279,7 +279,7 @@
           </div>
           <div class="mr-4 flex items-center cursor-pointer">
             <template
-              x-if=" submitPassword===credentials.password || submitEmail===credentials.email "
+              x-if=" submitPassword===credentials.password && submitEmail===credentials.email "
             >
               <span
                 id="foooter"

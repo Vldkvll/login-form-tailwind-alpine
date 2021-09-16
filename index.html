@@ -15,21 +15,6 @@
       [x-cloak] {
         display: none;
       }
-      button:disabled {
-        cursor: not-allowed;
-        opacity: 0.7;
-        color: rgb(189, 186, 186);
-        background-color: rgb(209, 205, 205);
-        border: none;
-      }
-      form:invalid > #submit {
-        pointer-events: none !important;
-        cursor: not-allowed !important;
-        opacity: 0.7;
-        color: rgb(189, 186, 186);
-        background-color: rgb(209, 205, 205);
-        border: none;
-      }
     </style>
   </head>
 
@@ -59,9 +44,8 @@
                   <div x-data="userCred" class="mx-auto max-w-lg">
                     <div class="">
                       <div class="relative">
-                        <div x-data="{username: '' }" class="relative">
+                        <div class="relative">
                           <input
-                            x-data="{username: '' }"
                             x-model="user"
                             placeholder="username"
                             type="text"
@@ -101,7 +85,7 @@
                             />
                           </div>
                         </div>
-                        <div x-data="{emailField: '' }" class="relative">
+                        <div class="relative">
                           <input
                             x-model="email"
                             placeholder="Email address"
@@ -161,10 +145,10 @@
                     <div class="" x-data="{ show: true }">
                       <div class="relative">
                         <input
-                          placeholder="Password"
+                          x-model="password"
                           :type="show ? 'password' : 'text'"
                           name="password"
-                          x-model="password"
+                          placeholder="Password"
                           required
                           minlength="8"
                           class="
