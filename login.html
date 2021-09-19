@@ -30,279 +30,274 @@
   </head>
 
   <body
-    x-data="{submitEmail: '', submitPassword: '' , emailField: '' , password:'' }"
+    x-data="{submitEmail: '', submitPassword: '' , emailField: '' , password:'', credentials: JSON.parse(localStorage.getItem('_x_credential') || {} ) }"
   >
-    <div
-      x-data="{credentials: JSON.parse(localStorage.getItem('_x_credential') || {} ) }"
-      class="container flex justify-center align-center"
-    >
-      <div class="min-h-screen font-sans">
-        <div class="max-w-sm mx-auto">
-          <div class="relative flex flex-wrap">
-            <div class="w-full relative">
-              <div x-cloak class="">
-                <span class="material-icons"> person_outline </span>
-                <span
-                  class="material-icons h-12 w-auto text-gray-700 inline-block"
-                  >language</span
-                >
-                <span class="material-icons"> lock_open </span>
-                <span class="material-icons"> lock </span>
-                <span class="material-icons"> visibility </span>
-                <span class="material-icons"> error_outline </span>
-                <span class="material-icons"> input </span>
+    <div class="min-h-screen font-sans">
+      <div class="max-w-sm max-w-lg mx-auto">
+        <div class="relative flex flex-wrap">
+          <div class="w-full relative">
+            <div class="">
+              <span class="material-icons"> person_outline </span>
+              <span
+                class="material-icons h-12 w-auto text-gray-700 inline-block"
+                >language</span
+              >
+              <span class="material-icons"> lock_open </span>
+              <span class="material-icons"> lock </span>
+              <span class="material-icons"> visibility </span>
+              <span class="material-icons"> error_outline </span>
+              <span class="material-icons"> input </span>
 
-                <span class="material-icons" style="color: green"> done </span>
-                <span class="material-icons" style="color: red"> close </span>
-                <div class="mt-20 flex justify-center">
-                  <svg
-                    class="h-24 w-auto text-gray-700 inline-block"
-                    version="1.0"
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="618.000000pt"
-                    height="441.000000pt"
-                    viewBox="0 0 618.000000 441.000000"
-                    preserveAspectRatio="xMidYMid meet"
+              <span class="material-icons" style="color: green"> done </span>
+              <span class="material-icons" style="color: red"> close </span>
+              <div class="mt-20 flex justify-center">
+                <svg
+                  class="h-24 w-auto text-gray-700 inline-block"
+                  version="1.0"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="618.000000pt"
+                  height="441.000000pt"
+                  viewBox="0 0 618.000000 441.000000"
+                  preserveAspectRatio="xMidYMid meet"
+                >
+                  <g
+                    transform="translate(0.000000,441.000000) scale(0.100000,-0.100000)"
+                    fill="#000000"
+                    stroke="none"
                   >
-                    <g
-                      transform="translate(0.000000,441.000000) scale(0.100000,-0.100000)"
-                      fill="#000000"
-                      stroke="none"
-                    >
-                      <path
-                        d="M1937 3804 l-987 -494 2 -509 3 -509 -35 18 c-237 121 -806 390 -817
+                    <path
+                      d="M1937 3804 l-987 -494 2 -509 3 -509 -35 18 c-237 121 -806 390 -817
 386 -11 -5 -13 -102 -11 -558 l3 -552 1575 -744 1574 -745 993 497 993 496 -2
 509 -3 509 35 -18 c237 -121 806 -390 817 -386 11 5 13 102 11 558 l-3 552
 -1570 743 c-863 408 -1574 742 -1580 742 -5 0 -454 -223 -998 -495z m2163
 -1149 c608 -296 1106 -538 1107 -539 3 -2 -1966 -913 -1984 -918 -6 -2 -515
 242 -1132 542 l-1121 545 38 18 c20 10 469 217 997 461 641 296 965 441 975
 436 8 -4 512 -249 1120 -545z"
-                      />
-                    </g>
-                  </svg>
-                </div>
+                    />
+                  </g>
+                </svg>
+              </div>
 
-                <div
-                  class="text-xl mt-16 pl-4 text-start font-semibold text-black"
+              <div
+                class="text-xl mt-16 pl-4 text-start font-semibold text-black"
+              >
+                <p
+                  x-text="!submitPassword || !submitEmail ? 'Welcome' : submitEmail!==credentials.email ? 'Oops!' : submitPassword!==credentials.password ? 'Wrong Password' : 'Welcome'"
                 >
-                  <p
-                    x-text="!submitPassword || !submitEmail ? 'Welcome' : submitEmail!==credentials.email ? 'Oops!' : submitPassword!==credentials.password ? 'Wrong Password' : 'Welcome'"
+                  Welcome
+                  <template
+                    x-if="submitPassword===credentials.password && submitEmail===credentials.email "
                   >
-                    Welcome
-                    <template
-                      x-if="submitPassword===credentials.password && submitEmail===credentials.email "
-                    >
-                      <span id="title" x-text="credentials.user"></span>
-                    </template>
-                  </p>
-                </div>
-                <div>
-                  <form class="mt-2" @submit.prevent="true">
-                    <div class="mx-auto max-w-lg">
-                      <div x-data="{ show: false }">
-                        <div class="relative">
-                          <input
-                            x-model="emailField"
-                            placeholder="Email address"
-                            type="text"
-                            required
-                            name="emailField"
-                            :class=" !submitEmail ? 'border-gray-200' : submitEmail===credentials.email ? 'border-green-300' : 'border-pink-700' "
-                            class="
-                              border-b-2
-                              text-md
-                              px-12
-                              py-6
-                              w-full
-                              bg-white
-                              border-gray-00
-                              placeholder-gray-400
-                              focus:bg-white
-                              focus:border-gray-600
-                              focus:outline-none
-                            "
-                          />
-                          <div
-                            x-data="{ open: false }"
-                            class="
-                              absolute
-                              inset-y-0
-                              pl-3
-                              flex
-                              items-center
-                              text-sm
-                              leading-5
-                            "
-                          >
-                            <img
-                              class="h-8 w-auto text-gray-700 opacity-50"
-                              src="./src/image/icon/person.svg"
-                              alt="user"
-                            />
-                          </div>
-                          <div
-                            class="
-                              absolute
-                              inset-y-0
-                              right-0
-                              pr-8
-                              flex
-                              items-center
-                              text-sm
-                              leading-5
-                              cursor-pointer
-                            "
-                          >
-                            <template x-if="credentials.email == submitEmail">
-                              <img
-                                class="h-6 w-auto"
-                                :class="{'block': show, 'hidden':show }"
-                                src="./src/image/icon/check.svg"
-                                alt=""
-                              />
-                            </template>
-                            <template
-                              x-if="credentials.email !== submitEmail && submitEmail"
-                            >
-                              <img
-                                class="h-6 w-auto bg-white"
-                                :class="{'block': show, 'hidden':show }"
-                                src="./src/image/icon/close.svg"
-                                alt=""
-                              />
-                            </template>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="" x-data="{ show: true, }">
-                        <div class="relative">
-                          <input
-                            placeholder="Password"
-                            :type="show ? 'password' : 'text'"
-                            :class=" !submitPassword ? 'border-gray-200' : submitPassword===credentials.password ? 'border-green-300' : 'border-pink-700' "
-                            x-model="password"
-                            class="
-                              z-50
-                              border-b-2
-                              text-md
-                              px-12
-                              py-6
-                              w-full
-                              bg-white
-                              border-gray-200
-                              placeholder-gray-400
-                              focus:placeholder-gray-500
-                              focus:bg-white
-                              focus:border-gray-600
-                              focus:outline-none
-                            "
-                            required
-                          />
-                          <div
-                            class="
-                              absolute
-                              inset-y-0
-                              top-4
-                              pl-3
-                              items-center
-                              text-sm
-                              leading-5
-                            "
-                          >
-                            <img
-                              class="h-8 w-auto text-gray-400 opacity-50"
-                              :class="{'hidden': !show, 'block':show }"
-                              src="./src/image/icon/lock.svg"
-                              alt="padlock"
-                            />
-                            <img
-                              class="h-8 w-auto text-gray-400"
-                              :class="{'block': !show, 'hidden':show }"
-                              src="./src/image/icon/unlock.svg"
-                              alt="padlock unlock"
-                            />
-                          </div>
-                          <div
-                            class="
-                              absolute
-                              inset-y-0
-                              right-0
-                              pr-8
-                              flex
-                              items-center
-                              text-sm
-                              leading-5
-                              cursor-pointer
-                            "
-                          >
-                            <img
-                              class="h-8 text-gray-700 opacity-50"
-                              @click="show = !show"
-                              :class="{'hidden': !show, 'block':show }"
-                              src="./src/image/icon/eye.svg"
-                              alt="eye"
-                            />
-                            <img
-                              class="h-8 text-gray-700"
-                              @click="show = !show"
-                              :class="{'block': !show, 'hidden':show }"
-                              src="./src/image/icon/eye.svg"
-                              alt="eye"
-                            />
-                          </div>
-                        </div>
-                      </div>
-                      <div class="container mt-2 pl-4 pr-4">
-                        <div class="flex justify-between items-center">
-                          <div class="flex w-full justify-start items-center">
-                            <img
-                              class="h-8 w-7 text-gray-400 opacity-40"
-                              src="./src/image/icon/warning.svg"
-                              alt="warning"
-                            />
-                            <label class="block text-gray-500 my-4">
-                              <a
-                                href="#"
-                                class="
-                                  cursor-pointer
-                                  tracking-tighter
-                                  text-gray-400
-                                  block
-                                  border-none border-gray-200
-                                  hover:border-gray-400
-                                "
-                                ><span class="pl-2">Forgot Password?</span></a
-                              ></label
-                            >
-                          </div>
-                          <button
-                            type="submit"
-                            @click="
-                          submitEmail=emailField
-                          submitPassword=password
+                    <span id="title" x-text="credentials.user"></span>
+                  </template>
+                </p>
+              </div>
+              <div>
+                <form class="mt-2" @submit.prevent="true">
+                  <div class="mx-auto max-w-lg">
+                    <div x-data="{ show: false }">
+                      <div class="relative">
+                        <input
+                          x-model="emailField"
+                          placeholder="Email address"
+                          type="text"
+                          required
+                          name="emailField"
+                          :class=" !submitEmail ? 'border-gray-200' : submitEmail===credentials.email ? 'border-green-300' : 'border-pink-700' "
+                          class="
+                            border-b-2
+                            text-md
+                            px-12
+                            py-6
+                            w-full
+                            bg-white
+                            border-gray-00
+                            placeholder-gray-400
+                            focus:bg-white
+                            focus:border-gray-600
+                            focus:outline-none
                           "
-                            x-text="!submitPassword || !submitEmail ? 'Login' : submitPassword===credentials.password && submitEmail===credentials.email ? 'Login' :  'Retry'"
-                            :class=" !submitPassword || !submitEmail ? null :  submitPassword===credentials.password && submitEmail===credentials.email  ? 'bg-green-400 , text-white , border-none' : 'bg-red-400 , text-white , border-none' "
-                            class="
-                              h-10
-                              px-5
-                              m-2
-                              text-gray-400
-                              transition-colors
-                              duration-150
-                              border-2 border-gray-400
-                              focus:shadow-outline
-                              rounded-full
-                              block
-                            "
+                        />
+                        <div
+                          x-data="{ open: false }"
+                          class="
+                            absolute
+                            inset-y-0
+                            pl-3
+                            flex
+                            items-center
+                            text-sm
+                            leading-5
+                          "
+                        >
+                          <img
+                            class="h-8 w-auto text-gray-700 opacity-50"
+                            src="./src/image/icon/person.svg"
+                            alt="user"
+                          />
+                        </div>
+                        <div
+                          class="
+                            absolute
+                            inset-y-0
+                            right-0
+                            pr-8
+                            flex
+                            items-center
+                            text-sm
+                            leading-5
+                            cursor-pointer
+                          "
+                        >
+                          <template x-if="credentials.email == submitEmail">
+                            <img
+                              class="h-6 w-auto"
+                              :class="{'block': show, 'hidden':show }"
+                              src="./src/image/icon/check.svg"
+                              alt=""
+                            />
+                          </template>
+                          <template
+                            x-if="credentials.email !== submitEmail && submitEmail"
                           >
-                            Login
-                          </button>
+                            <img
+                              class="h-6 w-auto bg-white"
+                              :class="{'block': show, 'hidden':show }"
+                              src="./src/image/icon/close.svg"
+                              alt=""
+                            />
+                          </template>
                         </div>
                       </div>
                     </div>
-                  </form>
-                </div>
+                    <div class="" x-data="{ show: true, }">
+                      <div class="relative">
+                        <input
+                          placeholder="Password"
+                          :type="show ? 'password' : 'text'"
+                          :class=" !submitPassword ? 'border-gray-200' : submitPassword===credentials.password ? 'border-green-300' : 'border-pink-700' "
+                          x-model="password"
+                          class="
+                            z-50
+                            border-b-2
+                            text-md
+                            px-12
+                            py-6
+                            w-full
+                            bg-white
+                            border-gray-200
+                            placeholder-gray-400
+                            focus:placeholder-gray-500
+                            focus:bg-white
+                            focus:border-gray-600
+                            focus:outline-none
+                          "
+                          required
+                        />
+                        <div
+                          class="
+                            absolute
+                            inset-y-0
+                            top-4
+                            pl-3
+                            items-center
+                            text-sm
+                            leading-5
+                          "
+                        >
+                          <img
+                            class="h-8 w-auto text-gray-400 opacity-50"
+                            :class="{'hidden': !show, 'block':show }"
+                            src="./src/image/icon/lock.svg"
+                            alt="padlock"
+                          />
+                          <img
+                            class="h-8 w-auto text-gray-400"
+                            :class="{'block': !show, 'hidden':show }"
+                            src="./src/image/icon/unlock.svg"
+                            alt="padlock unlock"
+                          />
+                        </div>
+                        <div
+                          class="
+                            absolute
+                            inset-y-0
+                            right-0
+                            pr-8
+                            flex
+                            items-center
+                            text-sm
+                            leading-5
+                            cursor-pointer
+                          "
+                        >
+                          <img
+                            class="h-8 text-gray-700 opacity-50"
+                            @click="show = !show"
+                            :class="{'hidden': !show, 'block':show }"
+                            src="./src/image/icon/eye.svg"
+                            alt="eye"
+                          />
+                          <img
+                            class="h-8 text-gray-700"
+                            @click="show = !show"
+                            :class="{'block': !show, 'hidden':show }"
+                            src="./src/image/icon/eye.svg"
+                            alt="eye"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                    <div class="container mt-2 pl-4 pr-4">
+                      <div class="flex justify-between items-center">
+                        <div class="flex w-full justify-start items-center">
+                          <img
+                            class="h-8 w-7 text-gray-400 opacity-40"
+                            src="./src/image/icon/warning.svg"
+                            alt="warning"
+                          />
+                          <label class="block text-gray-500 my-4">
+                            <a
+                              href="#"
+                              class="
+                                cursor-pointer
+                                tracking-tighter
+                                text-gray-400
+                                block
+                                border-none border-gray-200
+                                hover:border-gray-400
+                              "
+                              ><span class="pl-2">Forgot Password?</span></a
+                            ></label
+                          >
+                        </div>
+                        <button
+                          type="submit"
+                          @click="
+                          submitEmail=emailField
+                          submitPassword=password
+                          "
+                          x-text="!submitPassword || !submitEmail ? 'Login' : submitPassword===credentials.password && submitEmail===credentials.email ? 'Login' :  'Retry'"
+                          :class=" !submitPassword || !submitEmail ? null :  submitPassword===credentials.password && submitEmail===credentials.email  ? 'bg-green-400 , text-white , border-none' : 'bg-red-400 , text-white , border-none' "
+                          class="
+                            h-10
+                            px-5
+                            m-2
+                            text-gray-400
+                            transition-colors
+                            duration-150
+                            border-2 border-gray-400
+                            focus:shadow-outline
+                            rounded-full
+                            block
+                          "
+                        >
+                          Login
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </form>
               </div>
             </div>
           </div>
@@ -314,7 +309,10 @@
         class="
           bg-gray-200
           bottom-0
+          max-w-full
+          mx-auto
           w-full
+          sm:mt-40
           fixed
           flex
           justify-center

@@ -1,11 +1,9 @@
 import { defineConfig } from "vite";
 import { resolve } from "path";
 import { posthtmlPlugin } from "vite-plugin-posthtml";
-import compress from "vite-plugin-compression";
-import imageMin from "vite-plugin-imagemin";
 import fs from "fs";
 import inlineSVG from "posthtml-inline-svg";
-import posthtml from "posthtml";
+import posthtml from "posthtml"; // need? work? no!
 
 export default defineConfig({
   //   root: "src",
@@ -25,34 +23,14 @@ export default defineConfig({
     },
   },
   plugins: [
-    // imageMin({
-    //   svgo: {
-    //     // https://github.com/svg/svgo#built-in-plugins
-    //     plugins: [
-    //       { name: "RemoveTitle", active: false },
-    //       { name: "RemoveDescription", active: false },
-    //       { name: "RemoveViewBox", active: false },
-    //       { name: "removeDimensions", active: true },
-    //       { name: "removeScriptElement", active: true },
-    //       { name: "removeStyleElement", active: true },
-    //     ],
-    //   },
-    // }),
-    // compress({
-    //   algorithm: "brotliCompress",
-    // }),
-    // posthtmlPlugin({
-    //   posthtml: [
-    //     posthtml(
-    //       inlineSVG({
-    //         cwd: resolve("src"),
-    //         tag: "icon",
-    //         attr: "src",
-    //       })
-    //     )
-    //       .process(fs.readFileSync("index.html", "utf8"))
-    //       .then((result) => console.log(result.html)),
-    //   ],
-    // }),
+    posthtmlPlugin({
+      plugins: [
+        inlineSVG({
+          cwd: resolve("src/image/icon"),
+          tag: "icon",
+          attr: "src",
+        }),
+      ],
+    }),
   ],
 });
