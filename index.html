@@ -71,21 +71,20 @@
             h-20
           "
         >
-          <div class="ml-4 h-13 rounded-full bg-white w-13">
-            <a href="./index.html">
-              <span
-                class="
-                  material-icons
-                  w-auto
-                  text-gray-700
-                  block
-                  p-2
-                  opacity-40
-                  text-5xl
-                "
-                >language</span
-              >
-            </a>
+          <div
+            @click="localStorage.removeItem('_x_credential', {});  $nextTick( () => {location.href='./registration.html' })"
+          >
+            <div class="mr-4 flex items-center cursor-pointer">
+              <template x-if=" credentials.email ">
+                <span
+                  id="foooter"
+                  class="text-base opacity-40 pr-4"
+                  x-text="`${credentials.user} Logout` "
+                >
+                </span>
+                <span class="material-icons opacity-40 text-5xl"> input </span>
+              </template>
+            </div>
           </div>
 
           <a href="./login.html">
