@@ -15,29 +15,6 @@
       href="https://fonts.googleapis.com/icon?family=Material+Icons"
     />
     <script type="module" src="./src/main.js"></script>
-    <style>
-      /* .material-icons {
-        font-size: 40px;
-      }
-      @media (min-width: 1024px) {
-        html {
-          font-size: 162.5%;
-        }
-        .material-icons {
-          font-size: 60px;
-        }
-      }
-      [x-cloak] {
-        display: none !important;
-      }
-      #title,
-      #foooter {
-        text-transform: capitalize;
-      } */
-      /* input:focus:invalid {
-        background-color: rgb(167, 20, 20);
-      } */
-    </style>
   </head>
 
   <body
@@ -266,20 +243,24 @@
           "
         >
           <div class="ml-4 h-13 rounded-full bg-white w-13">
-            <span
-              class="
-                material-icons
-                w-auto
-                text-gray-700
-                block
-                p-2
-                opacity-40
-                text-5xl
-              "
-              >language</span
-            >
+            <a href="./index.html">
+              <span
+                class="
+                  material-icons
+                  w-auto
+                  text-gray-700
+                  block
+                  p-2
+                  opacity-40
+                  text-5xl
+                "
+                >language</span
+              >
+            </a>
           </div>
-          <a href="./registration.html">
+          <div
+            @click="localStorage.removeItem('_x_credential', {});  $nextTick( () => {location.href='./registration.html' })"
+          >
             <div class="mr-4 flex items-center cursor-pointer">
               <template
                 x-if=" submitPassword===credentials.password && submitEmail===credentials.email "
@@ -287,15 +268,16 @@
                 <span
                   id="foooter"
                   class="text-base opacity-40 pr-4"
-                  x-text="credentials.user"
-                ></span>
+                  x-text="`${credentials.user} Logout` "
+                >
+                </span>
               </template>
               <template x-if="credentials.email !== submitEmail">
                 <span class="text-base opacity-40 pr-4">New user</span>
               </template>
               <span class="material-icons opacity-40 text-5xl"> input </span>
             </div>
-          </a>
+          </div>
         </div>
       </footer>
     </div>
