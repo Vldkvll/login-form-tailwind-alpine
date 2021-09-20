@@ -1,9 +1,7 @@
 import { defineConfig } from "vite";
 import { resolve } from "path";
 import { posthtmlPlugin } from "vite-plugin-posthtml";
-import fs from "fs";
 import inlineSVG from "posthtml-inline-svg";
-import posthtml from "posthtml"; // need? work? no!
 
 export default defineConfig({
   //   root: "src",

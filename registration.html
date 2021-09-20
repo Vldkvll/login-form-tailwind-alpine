@@ -10,274 +10,396 @@
     <title>Alpine Vite Tailwind Registration Form</title>
 
     <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+    />
     <script type="module" src="./src/main.js"></script>
     <style>
       [x-cloak] {
         display: none;
       }
+      .material-icons {
+        font-size: 40px;
+      }
     </style>
   </head>
 
   <body>
-    <div class="min-h-screen font-sans">
-      <div class="max-w-sm mx-auto">
-        <div class="relative flex flex-wrap">
-          <div class="w-full relative">
-            <div class="">
-              <div class="mt-20 flex justify-center">
-                <icon src="abler-logo.svg" class="icon"></icon>
+    <div class="flex flex-col min-h-screen">
+      <header class="mt-4 flex justify-center">
+        <icon
+          src="abler-logo.svg"
+          class="icon h-12 sm:h-20 w-auto text-gray-700 inline-block"
+        ></icon>
+      </header>
+      <main
+        x-data="{ credential: $persist({email:'0000000000000000', password:'', user:''}) }"
+        class="flex-grow"
+      >
+        <form
+          x-cloak
+          x-data="userCred"
+          class="my-2 mx-auto max-w-lg lg:max-w-xl"
+          method="post"
+          action="./login.html"
+        >
+          <div class="text-2xl mt-4 pl-8 text-black">Registration</div>
+          <div x-data="userCred">
+            <div>
+              <div class="relative" x-data="{ open: false }">
+                <input
+                  x-model="user"
+                  placeholder="username"
+                  type="text"
+                  required
+                  minlength="2"
+                  name="username"
+                  class="
+                    border-b-2
+                    text-md
+                    px-16
+                    py-6
+                    w-full
+                    bg-white
+                    border-gray-200
+                    placeholder-gray-400
+                    focus:placeholder-gray-500
+                    focus:bg-white
+                    focus:border-gray-600
+                    focus:outline-none
+                  "
+                  @focus="open = true"
+                  @blur="open = false"
+                />
+                <div
+                  class="
+                    absolute
+                    inset-y-0
+                    pl-6
+                    flex
+                    items-center
+                    text-sm
+                    leading-5
+                  "
+                >
+                  <span
+                    class="material-icons text-gray-700 opacity-50"
+                    :class="open ? 'opacity-100' : 'opacity-50'"
+                  >
+                    person_outline
+                  </span>
+                </div>
+              </div>
+              <div x-data="{ show: false, open: false  }" class="relative">
+                <input
+                  x-model="email"
+                  placeholder="Email address"
+                  type="email"
+                  required
+                  pattern="/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/"
+                  name="emailField"
+                  class="
+                    border-b-2
+                    text-md
+                    px-16
+                    py-6
+                    w-full
+                    bg-white
+                    border-gray-200
+                    placeholder-gray-400
+                    focus:placeholder-gray-500
+                    focus:bg-white
+                    focus:border-gray-600
+                    focus:outline-none
+                  "
+                  @focus="open = true"
+                  @blur="open = false"
+                />
+                <div
+                  class="
+                    absolute
+                    inset-y-0
+                    pl-6
+                    flex
+                    items-center
+                    text-sm
+                    leading-5
+                  "
+                >
+                  <span
+                    class="material-icons inline-block text-gray-700 opacity-50"
+                    :class="open ? 'opacity-100' : 'opacity-50'"
+                  >
+                    alternate_email
+                  </span>
+                </div>
               </div>
               <div
-                class="text-xl mt-16 pl-4 text-start font-semibold text-black"
-              >
-                Registration
-              </div>
-              <div
-                x-data="{ credential: $persist({email:'0000000000000000', password:'', user:''}) }"
-              >
-                <form x-cloak class="my-48" action="./login.html">
-                  <div x-data="userCred" class="mx-auto max-w-lg">
-                    <div class="">
-                      <div class="">
-                        <div class="relative">
-                          <input
-                            x-model="user"
-                            placeholder="username"
-                            type="text"
-                            required
-                            minlength="2"
-                            name="username"
-                            class="
-                              border-b-2
-                              text-md
-                              px-12
-                              py-6
-                              w-full
-                              bg-white
-                              border-gray-200
-                              placeholder-gray-400
-                              focus:placeholder-gray-500
-                              focus:bg-white
-                              focus:border-gray-600
-                              focus:outline-none
-                            "
-                          />
-                          <div
-                            class="
-                              absolute
-                              inset-y-0
-                              pl-3
-                              flex
-                              items-center
-                              text-sm
-                              leading-5
-                            "
-                          >
-                            <img
-                              class="h-8 w-auto text-gray-700 opacity-50"
-                              src="./src/image/icon/person.svg"
-                              alt="user"
-                            />
-                          </div>
-                        </div>
-                        <div class="relative">
-                          <input
-                            x-model="email"
-                            placeholder="Email address"
-                            type="email"
-                            required
-                            pattern="/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/"
-                            name="emailField"
-                            class="
-                              border-b-2
-                              text-md
-                              px-12
-                              py-6
-                              w-full
-                              bg-white
-                              border-gray-200
-                              placeholder-gray-400
-                              focus:placeholder-gray-500
-                              focus:bg-white
-                              focus:border-gray-600
-                              focus:outline-none
-                            "
-                          />
-                          <div
-                            class="
-                              absolute
-                              inset-y-0
-                              pl-3
-                              flex
-                              items-center
-                              text-sm
-                              leading-5
-                            "
-                          >
-                            <img
-                              class="h-8 w-auto text-gray-700 opacity-50"
-                              src="./src/image/icon/email.svg"
-                              alt="email"
-                            />
-                          </div>
-                        </div>
-                        <div
-                          class="
-                            absolute
-                            inset-y-0
-                            right-0
-                            pr-8
-                            flex
-                            items-center
-                            text-sm
-                            leading-5
-                            cursor-pointer
-                          "
-                        ></div>
-                      </div>
-                    </div>
+                class="
+                  absolute
+                  inset-y-0
+                  right-0
+                  pr-8
+                  flex
+                  items-center
+                  text-sm
+                  leading-5
+                  cursor-pointer
+                "
+              ></div>
+            </div>
 
-                    <div class="" x-data="{ show: true }">
-                      <div class="relative">
-                        <input
-                          x-model="password"
-                          :type="show ? 'password' : 'text'"
-                          name="password"
-                          placeholder="Password"
-                          required
-                          minlength="8"
-                          class="
-                            z-50
-                            border-b-2
-                            text-md
-                            px-12
-                            py-6
-                            w-full
-                            bg-white
-                            border-gray-200
-                            placeholder-gray-400
-                            focus:placeholder-gray-500
-                            focus:bg-white
-                            focus:border-gray-600
-                            focus:outline-none
-                          "
-                        />
-                        <div
-                          class="
-                            absolute
-                            inset-y-0
-                            top-4
-                            pl-3
-                            items-center
-                            text-sm
-                            leading-5
-                          "
-                        >
-                          <img
-                            class="h-8 w-auto text-gray-400 opacity-50"
-                            :class="{'hidden': !show, 'block':show }"
-                            src="./src/image/icon/lock.svg"
-                            alt="padlock"
-                          />
-                          <img
-                            class="h-8 w-auto text-gray-400"
-                            :class="{'block': !show, 'hidden':show }"
-                            src="./src/image/icon/unlock.svg"
-                            alt="padlock unlock"
-                          />
-                        </div>
-                        <div
-                          class="
-                            absolute
-                            inset-y-0
-                            right-0
-                            pr-8
-                            flex
-                            items-center
-                            text-sm
-                            leading-5
-                            cursor-pointer
-                          "
-                        >
-                          <img
-                            class="h-8 text-gray-700 opacity-50"
-                            @click="show = !show"
-                            :class="{'hidden': !show, 'block':show }"
-                            src="./src/image/icon/eye.svg"
-                            alt="eye"
-                          />
-                          <img
-                            class="h-8 text-gray-700"
-                            @click="show = !show"
-                            :class="{'block': !show, 'hidden':show }"
-                            src="./src/image/icon/eye.svg"
-                            alt="eye"
-                          />
-                        </div>
-                      </div>
-                    </div>
-                    <div class="container mt-12 pl-3 pr-4">
-                      <div class="flex justify-center items-center">
-                        <button
-                          id="submit"
-                          type="submit"
-                          @click="
+            <div class="" x-data="{ show: true, open: false }">
+              <div class="relative">
+                <input
+                  x-model="password"
+                  :type="show ? 'password' : 'text'"
+                  name="password"
+                  placeholder="Password"
+                  required
+                  minlength="8"
+                  class="
+                    z-50
+                    border-b-2
+                    text-md
+                    px-16
+                    py-6
+                    w-full
+                    bg-white
+                    border-gray-200
+                    placeholder-gray-400
+                    focus:placeholder-gray-500
+                    focus:bg-white
+                    focus:border-gray-600
+                    focus:outline-none
+                  "
+                  @focus="open = true"
+                  @blur="open = false"
+                />
+                <div
+                  class="
+                    absolute
+                    inset-y-0
+                    top-4
+                    pl-6
+                    items-center
+                    text-sm
+                    leading-5
+                  "
+                >
+                  <template x-if=" show ">
+                    <span
+                      class="material-icons text-gray-700 opacity-40"
+                      :class="open ? 'opacity-100' : 'opacity-50'"
+                    >
+                      lock
+                    </span>
+                  </template>
+                  <template x-if=" !show ">
+                    <span class="material-icons text-gray-700">
+                      lock_open
+                    </span>
+                  </template>
+                </div>
+                <div
+                  class="
+                    absolute
+                    inset-y-0
+                    right-0
+                    pr-4
+                    flex
+                    items-center
+                    text-sm
+                    leading-5
+                    cursor-pointer
+                  "
+                  @focus="open = true"
+                  @blur="open = false"
+                >
+                  <template x-if=" show ">
+                    <span
+                      @click="show = !show"
+                      class="material-icons text-gray-400"
+                    >
+                      visibility
+                    </span>
+                  </template>
+                  <template x-if=" !show ">
+                    <span
+                      @click="show = !show"
+                      class="material-icons text-gray-700"
+                    >
+                      visibility
+                    </span>
+                  </template>
+                </div>
+              </div>
+            </div>
+            <div class="" x-data="{ show: true, open: false }">
+              <div class="relative">
+                <input
+                  x-model="password"
+                  :type="show ? 'password' : 'text'"
+                  name="password"
+                  placeholder="Confirmed Password"
+                  required
+                  minlength="8"
+                  class="
+                    z-50
+                    border-b-2
+                    text-md
+                    px-16
+                    py-6
+                    w-full
+                    bg-white
+                    border-gray-200
+                    placeholder-gray-400
+                    focus:placeholder-gray-500
+                    focus:bg-white
+                    focus:border-gray-600
+                    focus:outline-none
+                  "
+                  @focus="open = true"
+                  @blur="open = false"
+                />
+                <div
+                  class="
+                    absolute
+                    inset-y-0
+                    top-4
+                    pl-6
+                    items-center
+                    text-sm
+                    leading-5
+                  "
+                >
+                  <template x-if=" show ">
+                    <span
+                      class="material-icons text-gray-700 opacity-50"
+                      :class="open ? 'opacity-100' : 'opacity-50'"
+                    >
+                      lock
+                    </span>
+                  </template>
+                  <template x-if=" !show ">
+                    <span class="material-icons text-gray-700">
+                      lock_open
+                    </span>
+                  </template>
+                </div>
+                <div
+                  class="
+                    absolute
+                    inset-y-0
+                    right-0
+                    pr-4
+                    flex
+                    items-center
+                    text-sm
+                    leading-5
+                    cursor-pointer
+                  "
+                >
+                  <template x-if=" show ">
+                    <span
+                      @click="show = !show"
+                      class="material-icons text-gray-400"
+                    >
+                      visibility
+                    </span>
+                  </template>
+                  <template x-if=" !show ">
+                    <span
+                      @click="show = !show"
+                      class="material-icons text-gray-700"
+                    >
+                      visibility
+                    </span>
+                  </template>
+                </div>
+              </div>
+            </div>
+            <div class="container mt-4 pl-3 pr-4">
+              <div class="flex justify-center items-center">
+                <button
+                  id="submit"
+                  type="submit"
+                  @click="
                           credential.user=user
                           credential.email=email
                           credential.password=password
                           "
-                          class="
-                            h-10
-                            px-5
-                            m-2
-                            text-gray-400
-                            transition-colors
-                            duration-150
-                            border-2 border-gray-400
-                            focus:shadow-outline
-                            rounded-full
-                            block
-                            hover:text-white
-                            hover:bg-green-400
-                            hover:border-none
-                          "
-                        >
-                          Register
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                </form>
+                  class="
+                    h-10
+                    px-5
+                    m-2
+                    text-gray-400
+                    transition-colors
+                    duration-150
+                    border-2 border-gray-400
+                    focus:shadow-outline
+                    rounded-full
+                    block
+                    hover:text-white hover:bg-green-400 hover:border-none
+                  "
+                >
+                  Register
+                </button>
               </div>
             </div>
           </div>
-        </div>
-      </div>
-    </div>
-    <footer items-center class="bg-gray-200 w-full bottom-0 fixed">
-      <div
-        class="container flex justify-between align-center items-center h-20"
+        </form>
+      </main>
+      <!-- </div> -->
+      <footer
+        items-center
+        class="
+          bg-gray-200
+          bottom-0
+          max-w-full
+          mx-auto
+          w-full
+          flex
+          justify-center
+          items-center
+        "
       >
-        <div x-cloak class="block ml-4 h-12 rounded-full bg-white w-12">
-          <img
-            class="p-2 opacity-40"
-            src="./src/image/icon/globe.svg"
-            alt="globe"
-          />
-        </div>
-        <div class="mr-4 flex items-center">
-          <span class="text-base opacity-40 pr-4">Login Form</span>
+        <div
+          class="
+            container
+            max-w-lg
+            lg:max-w-xl
+            mx-auto
+            flex
+            justify-between
+            align-center
+            items-center
+            h-20
+          "
+        >
+          <div class="ml-4 h-13 rounded-full bg-white w-13">
+            <span
+              class="
+                material-icons
+                w-auto
+                text-gray-700
+                block
+                p-2
+                opacity-40
+                text-5xl
+              "
+              >language</span
+            >
+          </div>
           <a href="./login.html">
-            <img
-              x-cloak
-              class="block h-10 opacity-40 cursor-pointer"
-              @click="open = true"
-              src="./src/image/icon/login-square-arrow-button-outline.svg"
-              alt="arrow"
-            />
+            <div class="mr-4 flex items-center cursor-pointer">
+              <span class="text-base opacity-40 pr-4">Login Form</span>
+              <span class="material-icons opacity-40 text-5xl"> input </span>
+            </div>
           </a>
         </div>
-      </div>
-    </footer>
+      </footer>
+    </div>
   </body>
 </html>

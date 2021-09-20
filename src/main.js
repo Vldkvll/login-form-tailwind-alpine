@@ -12,3 +12,4 @@ Alpine.start();
 
 import "./assets/tailwind.css";
 import "./assets/scrollbar.css";
+import "./assets/general.css";

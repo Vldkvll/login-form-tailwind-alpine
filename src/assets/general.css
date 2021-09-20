@@ -1,0 +1,21 @@
+.material-icons {
+  font-size: 40px;
+}
+@media (min-width: 1024px) {
+  html {
+    font-size: 162.5%;
+  }
+  .material-icons {
+    font-size: 60px;
+  }
+}
+[x-cloak] {
+  display: none !important;
+}
+#title,
+#foooter {
+  text-transform: capitalize;
+}
+/* input:focus:invalid {
+    background-color: rgb(167, 20, 20);
+  } */
