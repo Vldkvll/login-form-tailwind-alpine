@@ -16,342 +16,333 @@
     />
     <script type="module" src="./src/main.js"></script>
     <style>
-      [x-cloak] {
-        display: none;
-      }
-      .material-icons {
-        font-size: 40px;
+      a:focus {
+        color: yellow;
       }
     </style>
   </head>
 
-  <body>
-    <div class="flex flex-col min-h-screen">
+  <body x-data="validation">
+    <!-- x-data="disableUnDisable()"  -->
+    <div x-data="{valid:true}" class="flex flex-col min-h-screen">
       <header class="mt-4 flex justify-center">
         <icon
           src="abler-logo.svg"
           class="icon h-12 sm:h-20 w-auto text-gray-700 inline-block"
         ></icon>
       </header>
+
       <main
-        x-data="{ credential: $persist({email:'0000000000000000', password:'', user:''}) }"
+        x-data="{  credential: $persist({email:'0000000000000000', password:'', user:''}) }"
         class="flex-grow"
       >
-        <form
-          x-cloak
-          x-data="userCred"
-          class="my-2 mx-auto max-w-lg lg:max-w-xl"
-          method="post"
-          action="./login.html"
-        >
-          <div class="text-2xl mt-4 pl-8 text-black">Registration</div>
-          <div x-data="userCred">
+        <!-- @submit="confirmPassword" -->
+        <div x-data="userCred">
+          <form
+            novalidate
+            x-cloak
+            x-ref="form"
+            x-init="$watch()"
+            @submit.prevent="true"
+            x-data="{diz:disableUnDisable()}"
+            class="my-2 mx-auto max-w-lg lg:max-w-xl"
+            method="post"
+          >
+            <!-- action="./login.html" -->
+            <div class="text-2xl mt-4 pl-8 text-black">Registration</div>
             <div>
-              <div class="relative" x-data="{ open: false }">
-                <input
-                  x-model="user"
-                  placeholder="username"
-                  type="text"
-                  required
-                  minlength="2"
-                  name="username"
-                  class="
-                    border-b-2
-                    text-md
-                    px-16
-                    py-6
-                    w-full
-                    bg-white
-                    border-gray-200
-                    placeholder-gray-400
-                    focus:placeholder-gray-500
-                    focus:bg-white
-                    focus:border-gray-600
-                    focus:outline-none
-                  "
-                  @focus="open = true"
-                  @blur="open = false"
-                />
-                <div
-                  class="
-                    absolute
-                    inset-y-0
-                    pl-6
-                    flex
-                    items-center
-                    text-sm
-                    leading-5
-                  "
-                >
-                  <span
-                    class="material-icons text-gray-700 opacity-50"
-                    :class="open ? 'opacity-100' : 'opacity-50'"
-                  >
-                    person_outline
-                  </span>
-                </div>
-              </div>
-              <div x-data="{ show: false, open: false  }" class="relative">
-                <input
-                  x-model="email"
-                  placeholder="Email address"
-                  type="email"
-                  required
-                  pattern="/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/"
-                  name="emailField"
-                  class="
-                    border-b-2
-                    text-md
-                    px-16
-                    py-6
-                    w-full
-                    bg-white
-                    border-gray-200
-                    placeholder-gray-400
-                    focus:placeholder-gray-500
-                    focus:bg-white
-                    focus:border-gray-600
-                    focus:outline-none
-                  "
-                  @focus="open = true"
-                  @blur="open = false"
-                />
-                <div
-                  class="
-                    absolute
-                    inset-y-0
-                    pl-6
-                    flex
-                    items-center
-                    text-sm
-                    leading-5
-                  "
-                >
-                  <span
-                    class="material-icons inline-block text-gray-700 opacity-50"
-                    :class="open ? 'opacity-100' : 'opacity-50'"
-                  >
-                    alternate_email
-                  </span>
-                </div>
-              </div>
-              <div
-                class="
-                  absolute
-                  inset-y-0
-                  right-0
-                  pr-8
-                  flex
-                  items-center
-                  text-sm
-                  leading-5
-                  cursor-pointer
-                "
-              ></div>
-            </div>
-
-            <div class="" x-data="{ show: true, open: false }">
-              <div class="relative">
-                <input
-                  x-model="password"
-                  :type="show ? 'password' : 'text'"
-                  name="password"
-                  placeholder="Password"
-                  required
-                  minlength="8"
-                  class="
-                    z-50
-                    border-b-2
-                    text-md
-                    px-16
-                    py-6
-                    w-full
-                    bg-white
-                    border-gray-200
-                    placeholder-gray-400
-                    focus:placeholder-gray-500
-                    focus:bg-white
-                    focus:border-gray-600
-                    focus:outline-none
-                  "
-                  @focus="open = true"
-                  @blur="open = false"
-                />
-                <div
-                  class="
-                    absolute
-                    inset-y-0
-                    top-4
-                    pl-6
-                    items-center
-                    text-sm
-                    leading-5
-                  "
-                >
-                  <template x-if=" show ">
-                    <span
-                      class="material-icons text-gray-700 opacity-40"
-                      :class="open ? 'opacity-100' : 'opacity-50'"
-                    >
-                      lock
-                    </span>
-                  </template>
-                  <template x-if=" !show ">
-                    <span class="material-icons text-gray-700">
-                      lock_open
-                    </span>
-                  </template>
-                </div>
-                <div
-                  class="
-                    absolute
-                    inset-y-0
-                    right-0
-                    pr-4
-                    flex
-                    items-center
-                    text-sm
-                    leading-5
-                    cursor-pointer
-                  "
-                  @focus="open = true"
-                  @blur="open = false"
-                >
-                  <template x-if=" show ">
-                    <span
-                      @click="show = !show"
-                      class="material-icons text-gray-400"
-                    >
-                      visibility
-                    </span>
-                  </template>
-                  <template x-if=" !show ">
-                    <span
-                      @click="show = !show"
-                      class="material-icons text-gray-700"
-                    >
-                      visibility
-                    </span>
-                  </template>
-                </div>
-              </div>
-            </div>
-            <div class="" x-data="{ show: true, open: false }">
-              <div class="relative">
-                <input
-                  x-model="password"
-                  :type="show ? 'password' : 'text'"
-                  name="password"
-                  placeholder="Confirmed Password"
-                  required
-                  minlength="8"
-                  class="
-                    z-50
-                    border-b-2
-                    text-md
-                    px-16
-                    py-6
-                    w-full
-                    bg-white
-                    border-gray-200
-                    placeholder-gray-400
-                    focus:placeholder-gray-500
-                    focus:bg-white
-                    focus:border-gray-600
-                    focus:outline-none
-                  "
-                  @focus="open = true"
-                  @blur="open = false"
-                />
-                <div
-                  class="
-                    absolute
-                    inset-y-0
-                    top-4
-                    pl-6
-                    items-center
-                    text-sm
-                    leading-5
-                  "
-                >
-                  <template x-if=" show ">
+              <div>
+                <div class="relative" x-data="{ open: false }">
+                  <input
+                    x-model="user"
+                    placeholder="username"
+                    type="text"
+                    required
+                    minlength="2"
+                    name="username"
+                    class="
+                      border-b-2
+                      text-md
+                      px-16
+                      py-6
+                      w-full
+                      bg-white
+                      border-gray-200
+                      placeholder-gray-400
+                      focus:placeholder-gray-500
+                      focus:bg-white
+                      focus:border-gray-600
+                      focus:outline-none
+                    "
+                    @focus="open = true"
+                    @blur="open = false"
+                  />
+                  <div class="absolute inset-y-0 pl-6 flex items-center">
                     <span
                       class="material-icons text-gray-700 opacity-50"
                       :class="open ? 'opacity-100' : 'opacity-50'"
                     >
-                      lock
+                      person_outline
                     </span>
-                  </template>
-                  <template x-if=" !show ">
-                    <span class="material-icons text-gray-700">
-                      lock_open
+                  </div>
+                </div>
+                <div x-data="{ show: false, open: false  }" class="relative">
+                  <input
+                    x-model="email"
+                    placeholder="Email address"
+                    type="email"
+                    required
+                    name="emailField"
+                    class="
+                      border-b-2
+                      text-md
+                      px-16
+                      py-6
+                      w-full
+                      bg-white
+                      border-gray-200
+                      placeholder-gray-400
+                      focus:placeholder-gray-500
+                      focus:bg-white
+                      focus:border-gray-600
+                      focus:outline-none
+                    "
+                    @focus="open = true"
+                    @blur="open = false"
+                  />
+                  <div
+                    class="
+                      absolute
+                      inset-y-0
+                      pl-6
+                      flex
+                      items-center
+                      text-sm
+                      leading-5
+                    "
+                  >
+                    <span
+                      class="
+                        material-icons
+                        inline-block
+                        text-gray-700
+                        opacity-50
+                      "
+                      :class="open ? 'opacity-100' : 'opacity-50'"
+                    >
+                      alternate_email
                     </span>
-                  </template>
+                  </div>
                 </div>
                 <div
                   class="
                     absolute
                     inset-y-0
                     right-0
-                    pr-4
+                    pr-8
                     flex
                     items-center
-                    text-sm
-                    leading-5
                     cursor-pointer
                   "
-                >
-                  <template x-if=" show ">
-                    <span
-                      @click="show = !show"
-                      class="material-icons text-gray-400"
-                    >
-                      visibility
-                    </span>
-                  </template>
-                  <template x-if=" !show ">
-                    <span
-                      @click="show = !show"
-                      class="material-icons text-gray-700"
-                    >
-                      visibility
-                    </span>
-                  </template>
+                ></div>
+              </div>
+
+              <div class="" x-data="{ show: true, open: false }">
+                <div class="relative">
+                  <input
+                    x-model="password"
+                    :type="show ? 'password' : 'text'"
+                    name="password"
+                    placeholder="Password"
+                    required
+                    minlength="8"
+                    class="
+                      z-50
+                      border-b-2
+                      text-md
+                      px-16
+                      py-6
+                      w-full
+                      bg-white
+                      border-gray-200
+                      placeholder-gray-400
+                      focus:placeholder-gray-500
+                      focus:bg-white
+                      focus:border-gray-600
+                      focus:outline-none
+                    "
+                    @focus="open = true"
+                    @blur="open = false"
+                  />
+                  <!-- x-on:invalid="password == password_confirm && password.length > 0 &&   " -->
+                  <div class="absolute inset-y-0 top-4 pl-6 items-center">
+                    <template x-if=" show ">
+                      <span
+                        class="material-icons text-gray-700 opacity-40"
+                        :class="open ? 'opacity-100' : 'opacity-50'"
+                      >
+                        lock
+                      </span>
+                    </template>
+                    <template x-if=" !show ">
+                      <span class="material-icons text-gray-700">
+                        lock_open
+                      </span>
+                    </template>
+                  </div>
+                  <div
+                    class="
+                      absolute
+                      inset-y-0
+                      right-0
+                      pr-4
+                      flex
+                      items-center
+                      cursor-pointer
+                    "
+                    @focus="open = true"
+                    @blur="open = false"
+                  >
+                    <template x-if=" show ">
+                      <span
+                        @click="show = !show"
+                        class="material-icons text-gray-400"
+                      >
+                        visibility
+                      </span>
+                    </template>
+                    <template x-if=" !show ">
+                      <span
+                        @click="show = !show"
+                        class="material-icons text-gray-700"
+                      >
+                        visibility
+                      </span>
+                    </template>
+                  </div>
+                </div>
+              </div>
+              <div
+                class=""
+                x-data="{ show: true, open: false, invalid: false }"
+              >
+                <div class="relative">
+                  <input
+                    x-ref="passRef"
+                    x-model="password_confirm"
+                    :type="show ? 'password' : 'text'"
+                    name="password_confirm"
+                    placeholder="Confirm Password"
+                    required
+                    minlength="8"
+                    class="
+                      z-50
+                      border-b-2
+                      text-md
+                      px-16
+                      py-6
+                      w-full
+                      bg-white
+                      border-gray-200
+                      placeholder-gray-400
+                      focus:placeholder-gray-500
+                      focus:bg-white
+                      focus:border-gray-600
+                      focus:outline-none
+                    "
+                    @focus="open = true"
+                    @blur="open = false"
+                    @keyup="
+      checkConfirmPassword(password, password_confirm)            
+                    "
+                    :class="invalid ? 'bg-gray-600' : 'bg-white'"
+                  />
+                  <div class="absolute inset-y-0 top-4 pl-6 items-center">
+                    <template x-if=" show ">
+                      <span
+                        class="material-icons text-gray-700 opacity-50"
+                        :class="open ? 'opacity-100' : 'opacity-50'"
+                      >
+                        lock
+                      </span>
+                    </template>
+                    <template x-if=" !show ">
+                      <span class="material-icons text-gray-700">
+                        lock_open
+                      </span>
+                    </template>
+                  </div>
+                  <div
+                    class="
+                      absolute
+                      inset-y-0
+                      right-0
+                      pr-4
+                      flex
+                      items-center
+                      cursor-pointer
+                    "
+                  >
+                    <template x-if=" show ">
+                      <span
+                        @click="show = !show"
+                        class="material-icons text-gray-400"
+                      >
+                        visibility
+                      </span>
+                    </template>
+                    <template x-if=" !show ">
+                      <span
+                        @click="show = !show"
+                        class="material-icons text-gray-700"
+                      >
+                        visibility
+                      </span>
+                    </template>
+                  </div>
+                </div>
+              </div>
+              <dialog x-on:show="true">
+                <span
+                  :class="{'text-green-700': password == password_confirm && password.length > 0, 'text-red-700':password != password_confirm || password.length == 0}"
+                  class="font-medium text-sm ml-3"
+                  x-text="password == password_confirm && password.length > 0 ? 'Passwords match' : 'Passwords do not match' "
+                ></span>
+              </dialog>
+              <div class="container mt-4 pl-3 pr-4">
+                <div class="flex justify-center items-center">
+                  <!-- id="submit" -->
+                  <button
+                    type="submit"
+                    x-bind:disabled="diz"
+                    @click="
+                            credential.user=user
+                            credential.email=email
+                            credential.password=password
+                            "
+                    class="
+                      h-10
+                      px-5
+                      m-2
+                      text-gray-700
+                      transition-colors
+                      duration-150
+                      border-2 border-gray-400
+                      focus:shadow-outline
+                      rounded-full
+                      block
+                      hover:text-white hover:bg-green-400 hover:border-none
+                    "
+                  >
+                    Register
+                  </button>
                 </div>
               </div>
             </div>
-            <div class="container mt-4 pl-3 pr-4">
-              <div class="flex justify-center items-center">
-                <button
-                  id="submit"
-                  type="submit"
-                  @click="
-                          credential.user=user
-                          credential.email=email
-                          credential.password=password
-                          "
-                  class="
-                    h-10
-                    px-5
-                    m-2
-                    text-gray-400
-                    transition-colors
-                    duration-150
-                    border-2 border-gray-400
-                    focus:shadow-outline
-                    rounded-full
-                    block
-                    hover:text-white hover:bg-green-400 hover:border-none
-                  "
-                >
-                  Register
-                </button>
-              </div>
-            </div>
-          </div>
-        </form>
+          </form>
+        </div>
       </main>
-      <!-- </div> -->
+
       <footer
         items-center
         class="

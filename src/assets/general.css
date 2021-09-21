@@ -16,6 +16,19 @@
 #foooter {
   text-transform: capitalize;
 }
-/* input:focus:invalid {
-    background-color: rgb(167, 20, 20);
-  } */
+input:focus:invalid {
+  background-color: rgb(167, 20, 20);
+}
+button:disabled {
+  cursor: not-allowed;
+  background-color: #fff;
+  opacity: 30%;
+}
+button:hover:disabled {
+  cursor: not-allowed;
+  color: black;
+  border: 1px solid;
+  border-color: black;
+  background-color: #fff;
+  opacity: 30%;
+}
