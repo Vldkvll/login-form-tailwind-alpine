@@ -38,16 +38,29 @@ export default () => {
         return !this.$el.form.checkValidity();
       }
     },
-    checkConfirmPassword(password, passwordConfirm) {
+    checkValidInput() {
+      if (this.$refs.form) {
+        console.log(
+          "disableUnDisable ~ his.$refs.form.checkValidity()",
+          !this.$refs.form.checkValidity(),
+          this.$refs.form
+        );
+        if (this.$refs.form.checkValidity()) this.diz = false;
+      } else if (this.$el.form) {
+        if (this.$el.form.checkValidity()) this.diz = false;
+      }
+    },
+
+    checkValidInput(password = null, passwordConfirm = null) {
+      console.log(`object`, this.$el.form);
       console.log(
         `this.$el.form.checkValidity()`,
         this.$el.form.checkValidity()
       );
-      console.log(`object`, this.$el.form);
       // console.log(
       //   `his.$refs.form.checkValidity --->> checkConfirmPassword`,
       //   "this.$refs.form.checkValidity()",
-      //   this.$refs.form.checkValidity(),
+      //   this.$refs.form,
       //   "$el",
       //   this.$el,
       //   password,
@@ -55,7 +68,8 @@ export default () => {
       // );
 
       if (password != passwordConfirm) {
-        console.log(`object`, this.$el);
+        // this.checkValidInput();
+        // console.log(`object`, this.$el);
         // return this.$el.setCustomValidity("Your passwords do not match");
         // return this.$el.setCustomValidity("Your passwords do not match");
         this.$nextTick(() => {
@@ -63,8 +77,10 @@ export default () => {
         });
       } else {
         this.$el.setCustomValidity("");
+        // this.checkValidInput();
         // this.disableUnDisable();
       }
+      if (this.$el.form.checkValidity()) this.diz = false;
       //   this.$refs.form.checkValidity()=false;
     },
   };
