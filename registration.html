@@ -15,11 +15,6 @@
       href="https://fonts.googleapis.com/icon?family=Material+Icons"
     />
     <script type="module" src="./src/main.js"></script>
-    <style>
-      a:focus {
-        color: yellow;
-      }
-    </style>
   </head>
 
   <body x-data="validation">
@@ -41,6 +36,7 @@
           <form
             novalidate
             x-cloak
+            @change="checkValidForm()"
             x-ref="form"
             x-init="$watch()"
             @submit.prevent="true"

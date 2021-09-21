@@ -38,7 +38,7 @@ export default () => {
         return !this.$el.form.checkValidity();
       }
     },
-    checkValidInput() {
+    checkValidForm() {
       if (this.$refs.form) {
         console.log(
           "disableUnDisable ~ his.$refs.form.checkValidity()",
@@ -80,7 +80,7 @@ export default () => {
         // this.checkValidInput();
         // this.disableUnDisable();
       }
-      if (this.$el.form.checkValidity()) this.diz = false;
+      // if (this.$el.form.checkValidity()) this.diz = false;
       //   this.$refs.form.checkValidity()=false;
     },
   };
